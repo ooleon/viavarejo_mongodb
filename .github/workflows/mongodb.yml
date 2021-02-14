@@ -1,0 +1,38 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CIMongoDb
+
+on: [push]
+
+jobs:
+  test_mongo_action:
+    runs-on: ubuntu-latest
+    name: Test mongo-action
+    steps:
+      - name: actions/checkout v2
+        id: maven_project
+        uses: actions/checkout@v2
+      - name: Create mongo Docker container
+        id: build_mongo_docker
+        uses: DigiPie/mongo-action@v1.0.1
+        with:
+          image-version: latest
+          port: 27017
+      - name: Test mongo connection
+        id: test_mongo_connection
+        run: "sudo mongo localhost:27017 &"
+
+      - name: pwd
+        run: pwd
+      - name: Run ls Test
+        run: ls -l /home/runner/work/
+
+      - name: Test springboot SpringBootMongodbExampleApplicationTests
+        id: springboot_test_SpringBootMongodbExampleApplicationTests
+        run: mvn test -B -Dtest=SpringBootMongodbExampleApplicationTests test
+
+
+
+
+
+
