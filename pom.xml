@@ -9,13 +9,11 @@
 	<packaging>jar</packaging>
 
 	<name>spring-boot-mongodb-example</name>
-	<description>Prueba para ViaVarejo Projeto API CRUD em Spring Boot com mongodb 4.4.3 ultima versao</description>
-
+	<description>Prueba para ViaVarejo Projeto API CRUD em Spring Boot com mongodb 4.4.3 ultima versao e Docker</description>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.0.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>1.5.8.RELEASE</version>
 	</parent>
 
 	<properties>
