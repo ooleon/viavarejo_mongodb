@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -42,8 +44,9 @@ public class ApolicesControllerTests {
     public void getAll() {
 //    	String url = "http://localhost:" + port + "/rest/apolices/all";
 //    	System.out.println(url);
-    	ResponseEntity rEntity = apolicesController.getAll();
-    	System.out.println(rEntity.getBody());
+//    	ResponseEntity rEntity = apolicesController.getAll();
+    	assertThat(apolicesController).isNotNull();
+//    	System.out.println(rEntity.getBody());
     	
 //    	String msg = this.restTemplate.getForObject(url, String.class);
     	
