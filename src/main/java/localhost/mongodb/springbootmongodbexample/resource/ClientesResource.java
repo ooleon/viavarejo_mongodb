@@ -34,7 +34,7 @@ public class ClientesResource {
         return clientesService.findAll();
     }
     
-    @GetMapping("/cliente/{id}")
+    @GetMapping("/id/{id}")
     public Clientes getClientesById(@PathVariable("id") String id) {
     	
         return clientesService.findOne(id);

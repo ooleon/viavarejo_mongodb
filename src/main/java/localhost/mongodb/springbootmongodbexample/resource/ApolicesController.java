@@ -26,11 +26,6 @@ public class ApolicesController {
     
     @Autowired
     private ApolicesService apolicesService;
-    
-
-//    public ApolicesController(ApoliceRepository apoliceRepository) {
-//        this.apoliceRepository = apoliceRepository;
-//    }
 
     @GetMapping("/all")
     public List<Apolices> getAll() {
@@ -42,10 +37,21 @@ public class ApolicesController {
 		return new ResponseEntity(this.apolicesService.save(a), HttpStatus.OK);
 	}
 
-    @GetMapping("/apolices/{id}")
-    public Apolices getApolicesById(@PathVariable("id") String id) {
+	@RequestMapping(value = { "/salvarAleatorio" }, method = { RequestMethod.POST })
+	public ResponseEntity<Apolices> salvarNumeroRandom(@RequestBody Apolices a) {
+		return new ResponseEntity(this.apolicesService.save(a), HttpStatus.OK);
+	}
+
+    @GetMapping("/numero/{numero}")
+    public Apolices getApolicesById(@PathVariable("numero") String numero) {
     	
-        return apolicesService.findOne(id);
+        return apolicesService.findOne(numero);
+    }
+    
+    @GetMapping("/cpf/{numeroCpf}")
+    public List<Apolices> getApolicesByCpfCliente(@PathVariable("numeroCpf") String numeroCpf) {
+    	
+        return apolicesService.findByIdCliente(Long.valueOf(numeroCpf));
     }
     
 }
