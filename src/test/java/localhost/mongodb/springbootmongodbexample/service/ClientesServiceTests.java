@@ -16,6 +16,8 @@ import localhost.mongodb.springbootmongodbexample.repository.ApoliceRepository;
 import localhost.mongodb.springbootmongodbexample.repository.ClienteRepository;
 import localhost.mongodb.springbootmongodbexample.resource.*;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.List;
 
 import org.junit.runner.RunWith;
@@ -53,24 +55,43 @@ public class ClientesServiceTests {
 
 	}
 
-/*
-	public Clientes save(Clientes c) {
-		Clientes clientes = clienteRepository.save(c);
+	@Test
+	public void save(Clientes c) {
+		logger.info("create_save");
+		Clientes clientes = clientesService.save(c);
 		logger.info(clientes.toString());
-		return clientes;
 	}
 
-	public List<Clientes> findAll() {
-		return clienteRepository.findAll();
+	@Test
+	public void findAll() {
+		logger.info("findAll");
+		clientesService.findAll();
 	}
 
-	public Clientes findOne(Long numero) {
-		return clienteRepository.findOne(numero);
+	@Test
+	public void findOne_Long() {
+		logger.info("findOne_Long");
+		Long numero = 12345678903L;
+		clientesService.findOne(numero);
 	}
 
-	public Clientes findOne(String id) {
-		Long numero = Long.valueOf(id);
-		return clienteRepository.findOne(numero);
+	@Test
+	public void findOne_String() {
+		logger.info("findOne_String");
+		String id="12345678903L";
+		clientesService.findOne(id);
 	}
-*/
+	
+	@Test
+	public void delete() {
+		System.out.println("delete()");
+		Long numero = 44445678904L;
+		System.out.println(clientesService.findOne(numero)
+				.toString());
+		clientesService.delete(numero);
+		if (clientesService.findOne(numero)==null) System.out.println("apagado: " + numero);
+		assertEquals(clientesService.findOne(numero),null);
+	}
+
+
 }

@@ -40,7 +40,9 @@ public class ClientesService {
 	}
 
 	public List<Clientes> findAll() {
-		return clienteRepository.findAll();
+		List<Clientes> lc = clienteRepository.findAll();
+		logger.info(lc.toArray().toString());
+		return lc;
 	}
 
 	public Clientes findOne(Long numero){
@@ -50,6 +52,10 @@ public class ClientesService {
 	public Clientes findOne(String id) {
 		Long numero = Long.valueOf(id);
 		return clienteRepository.findOne(numero);
+	}
+
+	public  void  delete(Long numero){
+		clienteRepository.delete(numero);
 	}
 
 }

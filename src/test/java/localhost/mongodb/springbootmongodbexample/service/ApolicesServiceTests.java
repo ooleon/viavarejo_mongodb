@@ -15,6 +15,8 @@ import localhost.mongodb.springbootmongodbexample.repository.ApoliceRepository;
 
 import localhost.mongodb.springbootmongodbexample.resource.*;
 
+import static org.junit.Assert.assertEquals;
+
 import java.util.Date;
 import java.util.List;
 
@@ -75,6 +77,7 @@ public class ApolicesServiceTests {
 				.toString());
 		apolicesService.delete(numero);
 		if (apolicesService.findOne(numero)==null) System.out.println("apagado: " + numero);
+		assertEquals(apolicesService.findOne(numero),null);
 	}
 
 	@Test
