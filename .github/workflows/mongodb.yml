@@ -21,7 +21,7 @@ jobs:
           
       - name: Test mongo connection
         id: test_mongo_connection
-        run: "sudo mongo localhost:27017 &"
+        run: sudo mongo localhost:27017
 
       - name: Test springboot SpringBootMongodbExampleApplicationTests
         id: springboot_test_SpringBootMongodbExampleApplicationTests
