@@ -8,15 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/rest/users")
-public class UsersResource {
+//@RestController
+//@RequestMapping("/rest/users")
+public class UsersResourceTests {
 
     private UserRepository userRepository;
-
-    public UsersResource(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     @GetMapping("/all")
     public List<Users> getAll() {

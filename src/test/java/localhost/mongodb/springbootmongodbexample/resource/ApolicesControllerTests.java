@@ -18,10 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.logging.Logger;
 
-@RestController
-@RequestMapping("/rest/apolices")
-
-public class ApolicesController {
+public class ApolicesControllerTests {
 //	public class ApolicesResource {
     private final Logger logger = Logger.getLogger(this.getClass().getName());
     
@@ -33,17 +30,17 @@ public class ApolicesController {
 //        this.apoliceRepository = apoliceRepository;
 //    }
 
-    @GetMapping("/all")
+//    @GetMapping("/all")
     public List<Apolices> getAll() {
         return this.apolicesService.findAll();
     }
     
-	@RequestMapping(value = { "/salvar" }, method = { RequestMethod.POST })
+//	@RequestMapping(value = { "/salvar" }, method = { RequestMethod.POST })
 	public ResponseEntity<Apolices> salvar(@RequestBody Apolices a) {
 		return new ResponseEntity(this.apolicesService.save(a), HttpStatus.OK);
 	}
 
-    @GetMapping("/apolices/{id}")
+//    @GetMapping("/apolices/{id}")
     public Apolices getApolicesById(@PathVariable("id") String id) {
     	
         return apolicesService.findOne(id);
