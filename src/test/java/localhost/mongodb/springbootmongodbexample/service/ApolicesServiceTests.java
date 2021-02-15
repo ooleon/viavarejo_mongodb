@@ -86,5 +86,16 @@ public class ApolicesServiceTests {
 		System.out.println(apolicesService.findAll());
 	}
 
+	@Test
+	public void conseguirApoliceDeCliente() {
+		System.out.println("conseguirApoliceDeCliente");
+		Long id = 12345678902L;
+		
+		System.out.println(apolicesService.findByIdCliente(id).size());
+		List<Apolices> la=apolicesService.findByIdCliente(id);
+		System.out.println(la.get(0).getNumero());
+		
+	}
+
 
 }

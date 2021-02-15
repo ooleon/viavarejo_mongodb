@@ -56,8 +56,9 @@ public class ClientesServiceTests {
 	}
 
 	@Test
-	public void save(Clientes c) {
+	public void save() {
 		logger.info("create_save");
+		Clientes c = new Clientes(234L,"Nina","Curitiba","PR");
 		Clientes clientes = clientesService.save(c);
 		logger.info(clientes.toString());
 	}
@@ -69,7 +70,21 @@ public class ClientesServiceTests {
 	}
 
 	@Test
-	public void findOne_Long() {
+	public void findOne_Long1() {
+		logger.info("findOne_Long");
+		Long numero = 12345678901L;
+		clientesService.findOne(numero);
+	}
+
+	@Test
+	public void findOne_Long2() {
+		logger.info("findOne_Long");
+		Long numero = 12345678902L;
+		clientesService.findOne(numero);
+	}
+
+	@Test
+	public void findOne_Long3() {
 		logger.info("findOne_Long");
 		Long numero = 12345678903L;
 		clientesService.findOne(numero);

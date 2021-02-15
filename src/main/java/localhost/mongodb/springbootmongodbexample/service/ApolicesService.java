@@ -39,6 +39,10 @@ public class ApolicesService {
 		return apolices;
 	}
 
+	public List<Apolices> findByIdCliente(Long cpfCliente) {
+		return apoliceRepository.findByCpfCliente(cpfCliente);
+	}
+
 	public List<Apolices> findAll() {
 		return apoliceRepository.findAll();
 	}
