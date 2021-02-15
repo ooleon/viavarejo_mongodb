@@ -56,6 +56,7 @@ public class ApolicesServiceTests {
 
 	@Test
 	public void create_save() {
+		logger.info("create_save()");
 		System.out.println("create_save()");
 		Apolices a = new Apolices(44445678905L, new Date(), new Date(), "RRR555", 55500.5D, 12345678903L );
 		Apolices apolices = apolicesService.save(a);
@@ -64,6 +65,7 @@ public class ApolicesServiceTests {
 
 	@Test
 	public void findOne() {
+		logger.info("findOne()");
 		System.out.println("findOne()");
 		System.out.println(apolicesService.findOne(44445678902L)
 				.toString());
@@ -71,6 +73,7 @@ public class ApolicesServiceTests {
 
 	@Test
 	public void delete() {
+		logger.info("delete()");
 		System.out.println("delete()");
 		Long numero = 44445678904L;
 		System.out.println(apolicesService.findOne(numero)
@@ -82,12 +85,14 @@ public class ApolicesServiceTests {
 
 	@Test
 	public void findAll() {
-		System.out.println("create_save()");
+		logger.info("findAll()");
+		System.out.println("findAll()");
 		System.out.println(apolicesService.findAll());
 	}
 
 	@Test
 	public void conseguirApoliceDeCliente() {
+		logger.info("conseguirApoliceDeCliente()");
 		System.out.println("conseguirApoliceDeCliente");
 		Long id = 12345678902L;
 		
