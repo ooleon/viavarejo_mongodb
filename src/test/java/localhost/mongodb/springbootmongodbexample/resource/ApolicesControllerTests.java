@@ -39,7 +39,7 @@ public class ApolicesControllerTests {
 //    @GetMapping("/rest/apolices/all")
     @Test
     public void getAll() {
-    	String url = "http://localhost:" + port + "/rest/apolices/all";
+    	String url = "http://localhost:8095" + "/rest/apolices/all";
     	System.out.println(url);
     	String msg = this.restTemplate.getForObject(url,
 				String.class);
