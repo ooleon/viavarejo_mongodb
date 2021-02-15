@@ -52,5 +52,10 @@ public class ApolicesService {
 		return apoliceRepository.findOne(numero);
 	}
 
+	public void delete(Long numero) {
+		apoliceRepository.delete(numero);
+		
+	}
+
 
 }
