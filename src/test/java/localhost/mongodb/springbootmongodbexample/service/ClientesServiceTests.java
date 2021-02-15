@@ -70,30 +70,30 @@ public class ClientesServiceTests {
 	}
 
 	@Test
-	public void findOne_Long1() {
-		logger.info("findOne_Long");
+	public void findOneLong1() {
+		logger.info("findOne_Long1");
 		Long numero = 12345678901L;
 		clientesService.findOne(numero);
 	}
 
 	@Test
-	public void findOne_Long2() {
-		logger.info("findOne_Long");
+	public void findOneLong2() {
+		logger.info("findOne_Long2");
 		Long numero = 12345678902L;
 		clientesService.findOne(numero);
 	}
 
 	@Test
-	public void findOne_Long3() {
-		logger.info("findOne_Long");
+	public void findOneLong3() {
+		logger.info("findOne_Long3");
 		Long numero = 12345678903L;
 		clientesService.findOne(numero);
 	}
 
 	@Test
-	public void findOne_String() {
+	public void findOneString() {
 		logger.info("findOne_String");
-		String id="12345678903L";
+		String id="12345678903";
 		clientesService.findOne(id);
 	}
 	
