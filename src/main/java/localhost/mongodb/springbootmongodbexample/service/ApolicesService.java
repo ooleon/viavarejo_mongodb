@@ -7,6 +7,7 @@ import localhost.mongodb.springbootmongodbexample.repository.ApoliceRepository;
 import localhost.mongodb.springbootmongodbexample.resource.*;
 
 import java.util.List;
+import java.util.Random;
 
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
@@ -33,10 +34,43 @@ public class ApolicesService {
 	@Autowired
 	private ApoliceRepository apoliceRepository;
 
+	public Apolices saveNumeroRandom(Apolices a) {
+		Long numero = generarIdRandom();
+		a.setNumero(numero);
+		
+		Apolices apolices = this.save(a);
+		logger.info(apolices.toString());
+		return apolices;
+	}
+	
 	public Apolices save(Apolices a) {
 		Apolices apolices = apoliceRepository.save(a);
 		logger.info(apolices.toString());
 		return apolices;
+	}
+
+	/**
+	 * generar numero de Apolice Random
+	 * @return Long 
+	 */
+	private Long generarIdRandom() {
+		
+
+		long leftLimit = 1L;
+	    long rightLimit = 10L;
+	    long generatedLong = 0;
+	    do {
+	    generatedLong = leftLimit + (long) (Math.random() * (rightLimit - leftLimit));
+	    if (apoliceRepository.findOne(generatedLong) == null) {
+	    	System.out.println("id generated: " + generatedLong);
+	    	break;
+	    }else {
+	    	System.out.println("id encontrado: " + generatedLong);
+	    }
+	    }while (true);
+	    
+	    return generatedLong;
+		
 	}
 
 	public List<Apolices> findByIdCliente(Long cpfCliente) {

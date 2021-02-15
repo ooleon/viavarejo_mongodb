@@ -20,7 +20,6 @@ import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/rest/apolices")
-
 public class ApolicesController {
 //	public class ApolicesResource {
     private final Logger logger = Logger.getLogger(this.getClass().getName());
@@ -35,7 +34,6 @@ public class ApolicesController {
 
     @GetMapping("/all")
     public List<Apolices> getAll() {
-//        return this.apolicesService.findAll();
     	return this.apolicesService.findAll();
     }
     

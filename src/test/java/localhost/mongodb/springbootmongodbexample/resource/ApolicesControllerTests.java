@@ -37,6 +37,7 @@ public class ApolicesControllerTests {
 	
     @Autowired
     ApolicesController apolicesController;
+    
     @Autowired
     private ApolicesService apolicesService;
     
@@ -47,7 +48,7 @@ public class ApolicesControllerTests {
 //    	ResponseEntity rEntity = apolicesController.getAll();
 //    	assertThat().isNotNull();
     	
-    	System.out.println(apolicesController.getAll());
+//    	System.out.println(apolicesController.getAll());
 //    	System.out.println(rEntity.getBody());
     	
 //    	String msg = this.restTemplate.getForObject(url, String.class);

@@ -63,6 +63,16 @@ public class ApolicesServiceTests {
 	}
 
 	@Test
+	public void salvarApoliceNumeroRandom() {
+		logger.info("salvarApoliceNumeroRandom()");
+		System.out.println("salvarApoliceNumeroRandom()");
+		Apolices a = new Apolices(1L, new Date(), new Date(), "RRR555", 55500.5D, 12345678903L );
+		
+		Apolices apolices = apolicesService.saveNumeroRandom(a);
+		System.out.println(apolices.toString());
+	}
+
+	@Test
 	public void findOne() {
 		logger.info("findOne()");
 		System.out.println("findOne()");
