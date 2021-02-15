@@ -61,15 +61,9 @@ public class ApolicesServiceTests {
 	}
 
 	@Test
-	public void findAll() {
-		System.out.println("create_save()");
-		System.out.println(apolicesService.findAll());
-	}
-
-	@Test
 	public void findOne() {
 		System.out.println("findOne()");
-		System.out.println(apolicesService.findOne(44445678905L)
+		System.out.println(apolicesService.findOne(44445678902L)
 				.toString());
 	}
 
@@ -81,6 +75,12 @@ public class ApolicesServiceTests {
 				.toString());
 		apolicesService.delete(numero);
 		if (apolicesService.findOne(numero)==null) System.out.println("apagado: " + numero);
+	}
+
+	@Test
+	public void findAll() {
+		System.out.println("create_save()");
+		System.out.println(apolicesService.findAll());
 	}
 
 
