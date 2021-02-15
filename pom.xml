@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>localhost.mongodb</groupId>
-	<artifactId>spring-boot-mongodb-example</artifactId>
+	<artifactId>viavarejo_mongodb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>spring-boot-mongodb-example</name>
+	<name>viavarejo_mongodb</name>
 	<description>ViaVarejo Projeto API CRUD em Spring Boot com mongodb 4.4.3 ultima versao e Docker</description>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
