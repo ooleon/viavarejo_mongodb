@@ -36,10 +36,12 @@ public class ApolicesControllerTests {
     @Autowired
     private ApolicesService apolicesService;
     
-//    @GetMapping("/all")
+//    @GetMapping("/rest/apolices/all")
     @Test
     public void getAll() {
-    	String msg = this.restTemplate.getForObject("http://localhost:" + port + "/",
+    	String url = "http://localhost:" + port + "/rest/apolices/all";
+    	System.out.println(url);
+    	String msg = this.restTemplate.getForObject(url,
 				String.class);
     	
     	System.out.println(msg);
