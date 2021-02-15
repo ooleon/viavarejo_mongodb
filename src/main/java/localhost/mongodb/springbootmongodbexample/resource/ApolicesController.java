@@ -34,9 +34,9 @@ public class ApolicesController {
 //    }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Apolices>> getAll() {
+    public List<Apolices> getAll() {
 //        return this.apolicesService.findAll();
-    	return new ResponseEntity(this.apolicesService.findAll(), HttpStatus.OK);
+    	return this.apolicesService.findAll();
     }
     
 	@RequestMapping(value = { "/salvar" }, method = { RequestMethod.POST })
