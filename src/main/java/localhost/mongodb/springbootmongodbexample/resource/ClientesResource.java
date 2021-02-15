@@ -24,11 +24,6 @@ public class ClientesResource {
 	@Autowired
 	private ClientesService clientesService;
 	
-//    public ClientesResource(ClienteRepository clienteRepository) {
-//        this.clienteRepository = clienteRepository;
-//    }
-
-    
 	@RequestMapping(value = { "/salvar" }, method = { RequestMethod.POST })
 	public ResponseEntity<Clientes> salvar(@RequestBody Clientes c) {
 		return new ResponseEntity(this.clientesService.save(c), HttpStatus.OK);

@@ -34,18 +34,20 @@ public class ApolicesControllerTests {
 	private TestRestTemplate restTemplate;
 	
     @Autowired
+    ApolicesController apolicesController;
+    @Autowired
     private ApolicesService apolicesService;
     
-//    @GetMapping("/rest/apolices/all")
     @Test
     public void getAll() {
-    	String url = "http://localhost:8095" + "/rest/apolices/all";
-    	System.out.println(url);
-    	String msg = this.restTemplate.getForObject("http://localhost",
-				String.class);
+//    	String url = "http://localhost:" + port + "/rest/apolices/all";
+//    	System.out.println(url);
+    	ResponseEntity rEntity = apolicesController.getAll();
+    	System.out.println(rEntity.getBody());
     	
-    	System.out.println(msg);
-//        this.apolicesService.findAll();
+//    	String msg = this.restTemplate.getForObject(url, String.class);
+    	
+//    	System.out.println(msg);
     }
     /*
 //	@RequestMapping(value = { "/salvar" }, method = { RequestMethod.POST })
