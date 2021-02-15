@@ -13,7 +13,6 @@ import localhost.mongodb.springbootmongodbexample.document.Apolices;
 import localhost.mongodb.springbootmongodbexample.document.Clientes;
 import localhost.mongodb.springbootmongodbexample.repository.ApoliceRepository;
 
-import localhost.mongodb.springbootmongodbexample.resource.*;
 
 import static org.junit.Assert.assertEquals;
 
