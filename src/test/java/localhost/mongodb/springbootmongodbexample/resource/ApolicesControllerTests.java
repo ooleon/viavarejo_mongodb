@@ -45,7 +45,9 @@ public class ApolicesControllerTests {
 //    	String url = "http://localhost:" + port + "/rest/apolices/all";
 //    	System.out.println(url);
 //    	ResponseEntity rEntity = apolicesController.getAll();
-    	assertThat(apolicesController).isNotNull();
+//    	assertThat().isNotNull();
+    	
+    	System.out.println(apolicesController.getAll());
 //    	System.out.println(rEntity.getBody());
     	
 //    	String msg = this.restTemplate.getForObject(url, String.class);
