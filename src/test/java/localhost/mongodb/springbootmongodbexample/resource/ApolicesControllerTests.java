@@ -41,7 +41,7 @@ public class ApolicesControllerTests {
     public void getAll() {
     	String url = "http://localhost:8095" + "/rest/apolices/all";
     	System.out.println(url);
-    	String msg = this.restTemplate.getForObject(url,
+    	String msg = this.restTemplate.getForObject("http://localhost",
 				String.class);
     	
     	System.out.println(msg);
