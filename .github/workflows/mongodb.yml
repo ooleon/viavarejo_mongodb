@@ -27,6 +27,14 @@ jobs:
         id: springboot_test_SpringBootMongodbExampleApplicationTests
         run: mvn test -B -Dtest=SpringBootMongodbExampleApplicationTests test
 
+      - name: Test springboot ApolicesServiceTestsTests
+        id: springboot_test_ApolicesServiceTests
+        run: mvn test -B -Dtest=ApolicesServiceTests test
+
+      - name: Test springboot ClientesServiceTests
+        id: springboot_test_ClientesServiceTests
+        run: mvn test -B -Dtest=ClientesServiceTests test
+
 
 
 
