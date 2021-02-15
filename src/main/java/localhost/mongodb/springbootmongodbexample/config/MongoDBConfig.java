@@ -34,6 +34,7 @@ public class MongoDBConfig {
 			clienteRepository.save(new Clientes(12345678901L, "Joao", "Curitiba", "PR"));
 			clienteRepository.save(new Clientes(12345678902L, "Maria", "Sao Paulo", "SP"));
 			clienteRepository.save(new Clientes(12345678903L, "Ana", "Rio de Janeiro", "RJ"));
+			clienteRepository.save(new Clientes(12345678904L, "Ana", "Rio de Janeiro", "RJ"));
 
 			apoliceRepository.save(new Apolices(44445678901L, new Date(), new Date(), "ERT344", 123400.1D, 12345678901L ));
 			apoliceRepository.save(new Apolices(44445678902L, new Date(), new Date(), "SER678", 123400.2D, 12345678901L ));

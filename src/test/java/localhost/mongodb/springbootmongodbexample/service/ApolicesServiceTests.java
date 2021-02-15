@@ -91,9 +91,14 @@ public class ApolicesServiceTests {
 		System.out.println("conseguirApoliceDeCliente");
 		Long id = 12345678902L;
 		
-		System.out.println(apolicesService.findByIdCliente(id).size());
+		System.out.println("apolices do cliente: " + apolicesService.findByIdCliente(id).size());
 		List<Apolices> la=apolicesService.findByIdCliente(id);
-		System.out.println(la.get(0).getNumero());
+		System.out.println(la);
+		System.out.println("apolice do cliente com CPF: " + id);
+		for (Apolices apolice : la) {
+			System.out.println();
+			System.out.println(apolice);
+		}
 		
 	}
 

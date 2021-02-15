@@ -100,7 +100,7 @@ public class ClientesServiceTests {
 	@Test
 	public void delete() {
 		System.out.println("delete()");
-		Long numero = 44445678904L;
+		Long numero = 12345678904L;
 		System.out.println(clientesService.findOne(numero)
 				.toString());
 		clientesService.delete(numero);
