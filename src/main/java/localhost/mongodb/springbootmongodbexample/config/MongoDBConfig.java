@@ -36,15 +36,17 @@ public class MongoDBConfig {
 			clienteRepository.save(new Clientes(12345678903L, "Ana", "Rio de Janeiro", "RJ"));
 			clienteRepository.save(new Clientes(12345678904L, "Ana", "Rio de Janeiro", "RJ"));
 
-			apoliceRepository.save(new Apolices(44445678901L, new Date(), new Date(), "ERT344", 123400.1D, 12345678901L ));
-			apoliceRepository.save(new Apolices(44445678902L, new Date(), new Date(), "SER678", 123400.2D, 12345678901L ));
-			apoliceRepository.save(new Apolices(44445678903L, new Date(), new Date(), "CVB456", 123400.3D, 12345678902L ));
-			apoliceRepository.save(new Apolices(44445678904L, new Date(), new Date(), "VFR765", 123400.4D, 12345678903L ));
+			Date d01 = new Date(); d01.setDate(1);
+			Date d28 = new Date(); d28.setDate(28);
+			apoliceRepository.save(new Apolices(44445678901L, d01, new Date(), "ERT344", 123400.1D, 12345678901L ));
+			apoliceRepository.save(new Apolices(44445678902L, d01, new Date(), "SER678", 123400.2D, 12345678901L ));
+			apoliceRepository.save(new Apolices(44445678903L, d28, new Date(), "CVB456", 123400.3D, 12345678902L ));
+			apoliceRepository.save(new Apolices(44445678904L, d28, new Date(), "VFR765", 123400.4D, 12345678903L ));
 
-			apoliceRepository.save(new Apolices(5555678901L, new Date(), new Date(), "ERT345", 123400.1D, 12345678901L ));
-			apoliceRepository.save(new Apolices(5555678902L, new Date(), new Date(), "RRT346", 123400.1D, 12345678901L ));
-			apoliceRepository.save(new Apolices(5555678903L, new Date(), new Date(), "CVB457", 123400.1D, 12345678902L ));
-			apoliceRepository.save(new Apolices(5555678904L, new Date(), new Date(), "WVB458", 123400.1D, 12345678902L ));
+			apoliceRepository.save(new Apolices(5555678901L, new Date(), d01, "ERT345", 123400.1D, 12345678901L ));
+			apoliceRepository.save(new Apolices(5555678902L, new Date(), d01, "RRT346", 123400.1D, 12345678901L ));
+			apoliceRepository.save(new Apolices(5555678903L, new Date(), d28, "CVB457", 123400.1D, 12345678902L ));
+			apoliceRepository.save(new Apolices(5555678904L, new Date(), d28, "WVB458", 123400.1D, 12345678902L ));
 			
 		};
 	}

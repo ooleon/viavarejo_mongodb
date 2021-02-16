@@ -108,7 +108,8 @@ public class Apolices {
 	}
 
 	public Boolean getEmVigencia() {
-		return vigenciaInício.compareTo(vigenciaFim)>=0;
+		Date hoje = new Date();
+		return vigenciaInício.compareTo(hoje)>=0 && hoje.compareTo(vigenciaFim)<0 ;
 	}
 
 	public void setEmVigencia(Boolean emVigencia) {
