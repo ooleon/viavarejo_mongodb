@@ -11,7 +11,7 @@ public class Apolices {
 
 	@Id
 	private Long numero;
-	private Date vigenciaInício;
+	private Date vigenciaInicio;
 	private Date vigenciaFim;
 	private String placaVeiculo;
 	private Double valor;
@@ -31,16 +31,16 @@ public class Apolices {
 	
 	/**
 	 * @param numero
-	 * @param vigenciaInício
+	 * @param vigenciaInicio
 	 * @param vigenciaFim
 	 * @param placaVeiculo
 	 * @param valor
 	 * @param cpfCliente
 	 */
-	public Apolices(Long numero, Date vigenciaInício, Date vigenciaFim, String placaVeiculo, Double valor,
+	public Apolices(Long numero, Date vigenciaInicio, Date vigenciaFim, String placaVeiculo, Double valor,
 			Long cpfCliente) {
 		this.numero = numero;
-		this.vigenciaInício = vigenciaInício;
+		this.vigenciaInicio = vigenciaInicio;
 		this.vigenciaFim = vigenciaFim;
 		this.placaVeiculo = placaVeiculo;
 		this.valor = valor;
@@ -51,7 +51,7 @@ public class Apolices {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("{numero=").append(numero).append(", vigenciaInício=").append(vigenciaInício)
+		builder.append("{numero=").append(numero).append(", vigenciaInicio=").append(vigenciaInicio)
 				.append(", vigenciaFim=").append(vigenciaFim).append(", placaVeiculo=").append(placaVeiculo)
 				.append(", valor=").append(valor).append(", emVigencia=").append(getEmVigencia()).append(", cpfCliente=")
 				.append(cpfCliente).append("}");
@@ -75,12 +75,12 @@ public class Apolices {
 		this.numero = numero;
 	}
 
-	public Date getVigenciaInício() {
-		return vigenciaInício;
+	public Date getVigenciaInicio() {
+		return vigenciaInicio;
 	}
 
-	public void setVigenciaInício(Date vigenciaInício) {
-		this.vigenciaInício = vigenciaInício;
+	public void setVigenciaInicio(Date vigenciaInicio) {
+		this.vigenciaInicio = vigenciaInicio;
 	}
 
 	public Date getVigenciaFim() {
@@ -109,7 +109,7 @@ public class Apolices {
 
 	public Boolean getEmVigencia() {
 		Date hoje = new Date();
-		return vigenciaInício.compareTo(hoje)>=0 && hoje.compareTo(vigenciaFim)<0 ;
+		return vigenciaInicio.compareTo(hoje)<0 && hoje.compareTo(vigenciaFim)<=0 ;
 	}
 
 	public void setEmVigencia(Boolean emVigencia) {
