@@ -41,26 +41,11 @@ public class ClientesResourceTests {
 	@Autowired
 	private ClientesResource clientesResource;
 
-	
-//	@GetMapping("/all")
+	// @GetMapping("/all")
 	@Test
-    public void findAllTest() {
+	public void findAllTest() {
 		logger.info("findAllTest");
-		
+
 		clientesResource.getAll();
-    }
-
-/*	
-	@RequestMapping(value = { "/salvar" }, method = { RequestMethod.POST })
-	public ResponseEntity<Clientes> salvar(@RequestBody Clientes c) {
-		return new ResponseEntity(this.clientesService.save(c), HttpStatus.OK);
 	}
-
-    
-    @GetMapping("/cliente/{id}")
-    public Clientes getClientesById(@PathVariable("id") String id) {
-    	
-        return clientesService.findOne(id);
-    }
-*/    
 }

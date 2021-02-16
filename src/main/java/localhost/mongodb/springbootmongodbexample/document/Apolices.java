@@ -3,6 +3,7 @@ package localhost.mongodb.springbootmongodbexample.document;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -14,6 +15,8 @@ public class Apolices {
 	private Date vigenciaFim;
 	private String placaVeiculo;
 	private Double valor;
+	@Transient
+	private Boolean emVigencia;
 
 	/**
 	 * é por este campo de relacao com a entidade cliente que é usado um banco de dados
@@ -44,14 +47,17 @@ public class Apolices {
 		this.cpfCliente = cpfCliente;
 	}
 
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("{numero=").append(numero).append(", vigenciaInício=").append(vigenciaInício)
 				.append(", vigenciaFim=").append(vigenciaFim).append(", placaVeiculo=").append(placaVeiculo)
-				.append(", valor=").append(valor).append(", cpfCliente=").append(cpfCliente).append("}");
+				.append(", valor=").append(valor).append(", emVigencia=").append(getEmVigencia()).append(", cpfCliente=")
+				.append(cpfCliente).append("}");
 		return builder.toString();
 	}
+
 
 	public Long getCpfCliente() {
 		return cpfCliente;
@@ -99,6 +105,14 @@ public class Apolices {
 
 	public void setValor(Double valor) {
 		this.valor = valor;
+	}
+
+	public Boolean getEmVigencia() {
+		return vigenciaInício.compareTo(vigenciaFim)>=0;
+	}
+
+	public void setEmVigencia(Boolean emVigencia) {
+		this.emVigencia = emVigencia;
 	}
 
 }

@@ -23,21 +23,21 @@ public class ClientesResource {
 
 	@Autowired
 	private ClientesService clientesService;
-	
+
 	@RequestMapping(value = { "/salvar" }, method = { RequestMethod.POST })
 	public ResponseEntity<Clientes> salvar(@RequestBody Clientes c) {
 		return new ResponseEntity(this.clientesService.save(c), HttpStatus.OK);
 	}
 
-    @GetMapping("/all")
-    public List<Clientes> getAll() {
-        return clientesService.findAll();
-    }
-    
-    @GetMapping("/id/{id}")
-    public Clientes getClientesById(@PathVariable("id") String id) {
-    	
-        return clientesService.findOne(id);
-    }
-    
+	@GetMapping("/all")
+	public List<Clientes> getAll() {
+		return clientesService.findAll();
+	}
+
+	@GetMapping("/id/{id}")
+	public Clientes getClientesById(@PathVariable("id") String id) {
+
+		return clientesService.findOne(id);
+	}
+
 }
