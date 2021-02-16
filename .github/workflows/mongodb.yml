@@ -41,7 +41,7 @@ jobs:
 
       - name: clean spring-boot run
         id: springboot_run
-        run: mvn clean spring-boot:run &
+        run: mvn clean spring-boot:run
 
       - name: Test springboot ApolicesControllerTests
         id: springboot_test_ApolicesControllerTests
