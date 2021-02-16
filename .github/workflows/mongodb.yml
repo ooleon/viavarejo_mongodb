@@ -23,6 +23,10 @@ jobs:
         id: test_mongo_connection
         run: sudo mongo localhost:27017
 
+      - name: clean spring-boot run
+        id: springboot_run
+        run: mvn clean spring-boot:run &
+
       - name: Test springboot SpringBootMongodbExampleApplicationTests
         id: springboot_test_SpringBootMongodbExampleApplicationTests
         run: mvn test -B -Dtest=SpringBootMongodbExampleApplicationTests test
@@ -38,10 +42,6 @@ jobs:
       - name: Test springboot ApolicesServiceTests
         id: springboot_test_ApolicesServiceTests
         run: mvn test -B -Dtest=ApolicesServiceTests test
-
-      - name: clean spring-boot run
-        id: springboot_run
-        run: mvn clean spring-boot:run
 
       - name: Test springboot ApolicesControllerTests
         id: springboot_test_ApolicesControllerTests
