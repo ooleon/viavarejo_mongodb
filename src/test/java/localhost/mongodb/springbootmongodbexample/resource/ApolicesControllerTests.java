@@ -43,19 +43,24 @@ public class ApolicesControllerTests {
     
     @Test
     public void getAll() {
-//    	String url = "http://localhost:" + port + "/rest/apolices/all";
-//    	System.out.println(url);
+    	System.out.println();
+    	System.out.println("ApolicesControllerTests.getAll()");
+    	String url = "http://localhost:" + port + "/rest/apolices/all";
+    	System.out.println(url);
 //    	ResponseEntity rEntity = apolicesController.getAll();
 //    	assertThat().isNotNull();
     	
 //    	System.out.println(apolicesController.getAll());
 //    	System.out.println(rEntity.getBody());
     	
-//    	String msg = this.restTemplate.getForObject(url, String.class);
+    	String msg = this.restTemplate.getForObject(url, String.class);
     	
-//    	System.out.println(msg);
+    	System.out.println();
+    	System.out.println(msg);
+    	System.out.println();
     }
-    /*
+
+/*    
 //	@RequestMapping(value = { "/salvar" }, method = { RequestMethod.POST })
 	public ResponseEntity<Apolices> salvar(@RequestBody Apolices a) {
 		return new ResponseEntity(this.apolicesService.save(a), HttpStatus.OK);
@@ -66,5 +71,5 @@ public class ApolicesControllerTests {
     	
         return apolicesService.findOne(id);
     }
-    */
+*/
 }

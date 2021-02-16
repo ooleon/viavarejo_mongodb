@@ -39,6 +39,10 @@ jobs:
         id: springboot_test_ApolicesServiceTests
         run: mvn test -B -Dtest=ApolicesServiceTests test
 
+      - name: Test springboot ApolicesServiceTests
+        id: springboot_test_ApolicesServiceTests
+        run: mvn clean spring-boot:run &
+
       - name: Test springboot ApolicesControllerTests
         id: springboot_test_ApolicesControllerTests
         run: mvn test -B -Dtest=ApolicesControllerTests test
