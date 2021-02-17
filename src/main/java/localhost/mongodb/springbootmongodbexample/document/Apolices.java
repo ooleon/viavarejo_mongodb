@@ -46,6 +46,7 @@ public class Apolices implements Serializable {
 		return builder.toString();
 	}
 
+	
 	/**
 	 * @param numero
 	 * @param vigenciaInicio
@@ -99,6 +100,11 @@ public class Apolices implements Serializable {
 	 * getEmVigencia()).append(", cpfCliente=") .append(cpfCliente).append("}");
 	 * return builder.toString(); }
 	 */
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 
 	public Long getCpfCliente() {
 		return cpfCliente;

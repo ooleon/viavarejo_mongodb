@@ -32,6 +32,7 @@ public class SpringBootMongodbExampleApplicationTests {
 		System.out.println();
 		System.out.println("numero de users: " + usersResource.getAll().size());
 		System.out.println("numero de clientes: " + clientesResource.getAll().size());
+		System.out.println("paso clientes: ");
 		System.out.println("numero de apolices: " + apolicesController.getAll().size());
 		
 		System.out.println("***** mongo <-> SpringBootMongodbExample *****");

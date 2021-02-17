@@ -1,6 +1,7 @@
 package localhost.mongodb.springbootmongodbexample.document;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -12,7 +13,18 @@ public class Clientes {
     private String cidade;
     private String uf;
     
-    /**
+    @Transient
+    private String myTransient;
+
+    public String getMyTransient() {
+		return myTransient;
+	}
+
+	public void setMyTransient(String myTransient) {
+		this.myTransient = myTransient;
+	}
+
+	/**
 	 * @param cpf
 	 * @param nome
 	 * @param cidade
