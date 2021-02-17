@@ -38,6 +38,7 @@ public class MongoDBConfig {
 
 			Date d01 = new Date(); d01.setDate(1);
 			Date d28 = new Date(); d28.setDate(28);
+			
 			apoliceRepository.save(new Apolices(44445678901L, d01, new Date(), "ERT344", 123400.1D, 12345678901L ));
 			apoliceRepository.save(new Apolices(44445678902L, d01, new Date(), "SER678", 123400.2D, 12345678901L ));
 			apoliceRepository.save(new Apolices(44445678903L, d28, new Date(), "CVB456", 123400.3D, 12345678902L ));

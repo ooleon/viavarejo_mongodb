@@ -58,7 +58,6 @@ public class Apolices implements Serializable {
 	 */
 	public Apolices(Long numero, Date vigenciaInicio, Date vigenciaFim, String placaVeiculo, Double valor,
 			Boolean emVigencia, int diasVigencia, Long cpfCliente) {
-		super();
 		this.numero = numero;
 		this.vigenciaInicio = vigenciaInicio;
 		this.vigenciaFim = vigenciaFim;
@@ -79,7 +78,6 @@ public class Apolices implements Serializable {
 	 */
 	public Apolices(Long numero, Date vigenciaInicio, Date vigenciaFim, String placaVeiculo, Double valor,
 			Long cpfCliente) {
-		super();
 		this.numero = numero;
 		this.vigenciaInicio = vigenciaInicio;
 		this.vigenciaFim = vigenciaFim;
