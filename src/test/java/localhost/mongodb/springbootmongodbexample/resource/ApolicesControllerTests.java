@@ -55,9 +55,19 @@ public class ApolicesControllerTests {
 		// System.out.println(apolicesController.getAll());
 		// System.out.println(rEntity.getBody());
 		// String msg = this.restTemplate.getForObject(url, String.class);
-		ResponseEntity<Object[]> responseEntity = this.restTemplate.getForEntity(url, Object[].class);
+		System.out.println();
+		System.out.println();
+		System.out.println();
+		ResponseEntity<Object[]> responseEntity = 
+				this.restTemplate.getForEntity(url, Object[].class);
 
-		ResponseEntity<List<Apolices>> rateResponse = restTemplate.exchange(url, HttpMethod.GET, null,
+		System.out.println("ResponseEntity<Object[]>");
+		System.out.println();
+		System.out.println();
+		System.out.println(responseEntity.getBody());
+		
+		ResponseEntity<List<Apolices>> rateResponse = 
+				restTemplate.exchange(url, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<Apolices>>() {
 				});
 		System.out.println();
