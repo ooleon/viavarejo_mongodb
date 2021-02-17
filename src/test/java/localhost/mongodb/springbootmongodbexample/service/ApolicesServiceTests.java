@@ -66,8 +66,8 @@ public class ApolicesServiceTests {
 	public void salvarApoliceNumeroRandom() {
 		logger.info("salvarApoliceNumeroRandom()");
 		System.out.println("salvarApoliceNumeroRandom()");
-		Apolices a = new Apolices(1L, new Date(), new Date(), "RRR555", 55500.5D, 12345678903L );
 		
+		Apolices a = new Apolices(1L, new Date(), new Date(), "RRR555", 55500.5D, 12345678903L );
 		Apolices apolices = apolicesService.saveNumeroRandom(a);
 		System.out.println(apolices.toString());
 	}
