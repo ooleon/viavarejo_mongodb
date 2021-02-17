@@ -17,7 +17,7 @@ public class Clientes {
     private String myTransient;
 
     public String getMyTransient() {
-		return myTransient;
+		return "mi";
 	}
 
 	public void setMyTransient(String myTransient) {
