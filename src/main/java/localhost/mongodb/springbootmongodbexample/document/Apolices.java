@@ -17,6 +17,8 @@ public class Apolices {
 	private Double valor;
 	@Transient
 	private Boolean emVigencia;
+	@Transient
+	private int diasVigencia;
 
 	/**
 	 * é por este campo de relacao com a entidade cliente que é usado um banco de dados
@@ -45,6 +47,17 @@ public class Apolices {
 		this.placaVeiculo = placaVeiculo;
 		this.valor = valor;
 		this.cpfCliente = cpfCliente;
+	}
+
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("{numero=").append(numero).append(", vigenciaInicio=").append(vigenciaInicio)
+				.append(", vigenciaFim=").append(vigenciaFim).append(", placaVeiculo=").append(placaVeiculo)
+				.append(", valor=").append(valor).append(", emVigencia=").append(emVigencia).append(", diasVigencia=")
+				.append(diasVigencia).append(", cpfCliente=").append(cpfCliente).append("}");
+		return builder.toString();
 	}
 
 /*
@@ -114,6 +127,16 @@ public class Apolices {
 
 	public void setEmVigencia(Boolean emVigencia) {
 		this.emVigencia = emVigencia;
+	}
+
+
+	public int getDiasVigencia() {
+		Date hoje = new Date();
+		return hoje.compareTo(vigenciaFim);
+	}
+
+	public void setDiasVigencia(int diasVigencia) {
+		this.diasVigencia = diasVigencia;
 	}
 
 }
