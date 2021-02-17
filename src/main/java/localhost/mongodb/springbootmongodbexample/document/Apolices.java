@@ -1,7 +1,5 @@
 package localhost.mongodb.springbootmongodbexample.document;
 
-import static org.mockito.Matchers.anyLong;
-
 import java.io.Serializable;
 import java.util.Date;
 
@@ -20,8 +18,10 @@ public class Apolices implements Serializable {
 	private Date vigenciaFim;
 	private String placaVeiculo;
 	private Double valor;
+	
 	@Transient
 	private Boolean emVigencia;
+	
 	@Transient
 	private int diasVigencia;
 
