@@ -12,6 +12,8 @@ import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -45,29 +47,42 @@ public class ApolicesControllerTests {
 	public void getAll() {
 		System.out.println();
 		System.out.println("ApolicesControllerTests.getAll()");
-		String url = "http://localhost:8095/rest/apolices/all";
+		String url = "http://localhost:" + port + "/rest/apolices/all";
 		System.out.println(url);
 		// ResponseEntity rEntity = apolicesController.getAll();
 		// assertThat().isNotNull();
 
 		// System.out.println(apolicesController.getAll());
 		// System.out.println(rEntity.getBody());
-//		String msg = this.restTemplate.getForObject(url, String.class);
-		ResponseEntity<Object[]> responseEntity =  this.restTemplate
-				.getForEntity(url,  Object[].class);
-		
+		// String msg = this.restTemplate.getForObject(url, String.class);
+		ResponseEntity<Object[]> responseEntity = this.restTemplate.getForEntity(url, Object[].class);
+
+		ResponseEntity<List<Apolices>> rateResponse = restTemplate.exchange(url, HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<Apolices>>() {
+				});
+		System.out.println();
+		System.out.println("rateResponse.getBody()");
+		System.out.println(rateResponse.getBody());
+		System.out.println();
+		List<Apolices> listApolices = rateResponse.getBody();
+		System.out.println("listApolices");
+		System.out.println("apolices[0]: " + listApolices.size());
+
+		System.out.println("listApolices");
+		System.out.println("apolices[0]: " + listApolices.get(0).getNumero());
+
 		Object[] objects = responseEntity.getBody();
-//		MediaType contentType = responseEntity.getHeaders().getContentType();
-//		HttpStatus statusCode = responseEntity.getStatusCode();
-		
+		// MediaType contentType = responseEntity.getHeaders().getContentType();
+		// HttpStatus statusCode = responseEntity.getStatusCode();
+
 		System.out.println("Apolices a = msg.get(0);");
 		Apolices a = (Apolices) objects[0];
-//		Apolices a = msg.get(0);
+		// Apolices a = msg.get(0);
 		System.out.println("a.getNumero()");
 		System.out.println(a.getNumero());
 
 		System.out.println();
-//		System.out.println(msg);
+		// System.out.println(msg);
 		System.out.println();
 	}
 
