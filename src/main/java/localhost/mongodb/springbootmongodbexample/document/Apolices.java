@@ -47,7 +47,7 @@ public class Apolices {
 		this.cpfCliente = cpfCliente;
 	}
 
-
+/*
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -57,7 +57,7 @@ public class Apolices {
 				.append(cpfCliente).append("}");
 		return builder.toString();
 	}
-
+*/
 
 	public Long getCpfCliente() {
 		return cpfCliente;

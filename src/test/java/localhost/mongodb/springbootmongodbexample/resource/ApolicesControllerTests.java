@@ -30,48 +30,47 @@ import java.util.logging.Logger;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ApolicesControllerTests {
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+	private final Logger logger = Logger.getLogger(this.getClass().getName());
 
 	@LocalServerPort
 	private int port;
 	@Autowired
 	private TestRestTemplate restTemplate;
-	
-    @Autowired
-    ApolicesController apolicesController;
-    
-    @Autowired
-    private ApolicesService apolicesService;
-    
-    @Test
-    public void getAll() {
-    	System.out.println();
-    	System.out.println("ApolicesControllerTests.getAll()");
-    	String url = "http://localhost:8095/rest/apolices/all";
-    	System.out.println(url);
-//    	ResponseEntity rEntity = apolicesController.getAll();
-//    	assertThat().isNotNull();
-    	
-//    	System.out.println(apolicesController.getAll());
-//    	System.out.println(rEntity.getBody());
-    	
-    	String msg = this.restTemplate.getForObject(url, String.class);
-    	
-    	System.out.println();
-    	System.out.println(msg);
-    	System.out.println();
-    }
 
-/*    
-//	@RequestMapping(value = { "/salvar" }, method = { RequestMethod.POST })
-	public ResponseEntity<Apolices> salvar(@RequestBody Apolices a) {
-		return new ResponseEntity(this.apolicesService.save(a), HttpStatus.OK);
+	@Autowired
+	ApolicesController apolicesController;
+
+	@Test
+	public void getAll() {
+		System.out.println();
+		System.out.println("ApolicesControllerTests.getAll()");
+		String url = "http://localhost:8095/rest/apolices/all";
+		System.out.println(url);
+		// ResponseEntity rEntity = apolicesController.getAll();
+		// assertThat().isNotNull();
+
+		// System.out.println(apolicesController.getAll());
+		// System.out.println(rEntity.getBody());
+//		String msg = this.restTemplate.getForObject(url, String.class);
+		List<Apolices> msg = (List<Apolices>) this.restTemplate.getForEntity(url, List.class.asSubclass(Apolices.class));
+		System.out.println("Apolices a = msg.get(0);");
+		Apolices a = msg.get(0);
+		System.out.println("a.getNumero()");
+		System.out.println(a.getNumero());
+
+		System.out.println();
+		System.out.println(msg);
+		System.out.println();
 	}
 
-//    @GetMapping("/apolices/{id}")
-    public Apolices getApolicesById(@PathVariable("id") String id) {
-    	
-        return apolicesService.findOne(id);
-    }
-*/
+	/*
+	 * // @RequestMapping(value = { "/salvar" }, method = { RequestMethod.POST })
+	 * public ResponseEntity<Apolices> salvar(@RequestBody Apolices a) { return new
+	 * ResponseEntity(this.apolicesService.save(a), HttpStatus.OK); }
+	 * 
+	 * // @GetMapping("/apolices/{id}") public Apolices
+	 * getApolicesById(@PathVariable("id") String id) {
+	 * 
+	 * return apolicesService.findOne(id); }
+	 */
 }
