@@ -56,14 +56,12 @@ public class ApolicesControllerTests {
 		// System.out.println(rEntity.getBody());
 		// String msg = this.restTemplate.getForObject(url, String.class);
 		System.out.println();
-		System.out.println();
-		System.out.println();
+		System.out.println("ResponseEntity <Object[]>");
 		ResponseEntity<Object[]> responseEntity = 
 				this.restTemplate.getForEntity(url, Object[].class);
 
-		System.out.println("ResponseEntity<Object[]>");
 		System.out.println();
-		System.out.println();
+		System.out.println("responseEntity.getBody()");
 		System.out.println(responseEntity.getBody());
 		
 		ResponseEntity<List<Apolices>> rateResponse = 
@@ -74,10 +72,11 @@ public class ApolicesControllerTests {
 		System.out.println("rateResponse.getBody()");
 		System.out.println(rateResponse.getBody());
 		System.out.println();
+		System.out.println("List<Apolices> listApolices = rateResponse.getBody()");
 		List<Apolices> listApolices = rateResponse.getBody();
+		System.out.println();
 		System.out.println("listApolices");
 		System.out.println("apolices[0]: " + listApolices.size());
-
 		System.out.println("listApolices");
 		System.out.println("apolices[0]: " + listApolices.get(0).getNumero());
 
