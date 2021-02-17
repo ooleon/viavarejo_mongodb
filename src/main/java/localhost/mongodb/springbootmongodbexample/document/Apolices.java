@@ -9,52 +9,33 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Apolices implements Serializable {
-	
+
 	private static final long serialVersionUID = 34535L;
-	
+
 	@Id
 	private Long numero;
 	private Date vigenciaInicio;
 	private Date vigenciaFim;
 	private String placaVeiculo;
 	private Double valor;
-	
+
 	@Transient
 	private Boolean emVigencia;
-	
+
 	@Transient
 	private int diasVigencia;
 
 	/**
-	 * é por este campo de relacao com a entidade cliente que é usado um banco de dados
-	 *  relacional de tipo SQL como Oracle, Postgres, Mysql, MsSqlServer, etc
-	 *  e nao usar NOSQL como MongoDb. 
-	 *  Aqui a explicacao.
-	 *  https://www.reddit.com/r/webdev/comments/45v12j/seriously_when_is_nosql_a_good_idea/
-	 * */
+	 * é por este campo de relacao com a entidade cliente que é usado um banco de
+	 * dados relacional de tipo SQL como Oracle, Postgres, Mysql, MsSqlServer, etc e
+	 * nao usar NOSQL como MongoDb. Aqui a explicacao.
+	 * https://www.reddit.com/r/webdev/comments/45v12j/seriously_when_is_nosql_a_good_idea/
+	 */
 	private Long cpfCliente;
 
 	
 	
-	/**
-	 * @param numero
-	 * @param vigenciaInicio
-	 * @param vigenciaFim
-	 * @param placaVeiculo
-	 * @param valor
-	 * @param cpfCliente
-	 */
-	public Apolices(Long numero, Date vigenciaInicio, Date vigenciaFim, String placaVeiculo, Double valor,
-			Long cpfCliente) {
-		this.numero = numero;
-		this.vigenciaInicio = vigenciaInicio;
-		this.vigenciaFim = vigenciaFim;
-		this.placaVeiculo = placaVeiculo;
-		this.valor = valor;
-		this.cpfCliente = cpfCliente;
-	}
-
-
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -65,17 +46,61 @@ public class Apolices implements Serializable {
 		return builder.toString();
 	}
 
-/*
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("{numero=").append(numero).append(", vigenciaInicio=").append(vigenciaInicio)
-				.append(", vigenciaFim=").append(vigenciaFim).append(", placaVeiculo=").append(placaVeiculo)
-				.append(", valor=").append(valor).append(", emVigencia=").append(getEmVigencia()).append(", cpfCliente=")
-				.append(cpfCliente).append("}");
-		return builder.toString();
+	/**
+	 * @param numero
+	 * @param vigenciaInicio
+	 * @param vigenciaFim
+	 * @param placaVeiculo
+	 * @param valor
+	 * @param emVigencia
+	 * @param diasVigencia
+	 * @param cpfCliente
+	 */
+	public Apolices(Long numero, Date vigenciaInicio, Date vigenciaFim, String placaVeiculo, Double valor,
+			Boolean emVigencia, int diasVigencia, Long cpfCliente) {
+		super();
+		this.numero = numero;
+		this.vigenciaInicio = vigenciaInicio;
+		this.vigenciaFim = vigenciaFim;
+		this.placaVeiculo = placaVeiculo;
+		this.valor = valor;
+		this.emVigencia = emVigencia;
+		this.diasVigencia = diasVigencia;
+		this.cpfCliente = cpfCliente;
 	}
-*/
+
+	/**
+	 * @param numero
+	 * @param vigenciaInicio
+	 * @param vigenciaFim
+	 * @param placaVeiculo
+	 * @param valor
+	 * @param cpfCliente
+	 */
+	public Apolices(Long numero, Date vigenciaInicio, Date vigenciaFim, String placaVeiculo, Double valor,
+			Long cpfCliente) {
+		super();
+		this.numero = numero;
+		this.vigenciaInicio = vigenciaInicio;
+		this.vigenciaFim = vigenciaFim;
+		this.placaVeiculo = placaVeiculo;
+		this.valor = valor;
+		this.emVigencia = emVigencia;
+		this.diasVigencia = diasVigencia;
+		this.cpfCliente = cpfCliente;
+	}
+
+	/*
+	 * @Override public String toString() { StringBuilder builder = new
+	 * StringBuilder();
+	 * builder.append("{numero=").append(numero).append(", vigenciaInicio=").append(
+	 * vigenciaInicio)
+	 * .append(", vigenciaFim=").append(vigenciaFim).append(", placaVeiculo=").
+	 * append(placaVeiculo)
+	 * .append(", valor=").append(valor).append(", emVigencia=").append(
+	 * getEmVigencia()).append(", cpfCliente=") .append(cpfCliente).append("}");
+	 * return builder.toString(); }
+	 */
 
 	public Long getCpfCliente() {
 		return cpfCliente;
@@ -127,13 +152,12 @@ public class Apolices implements Serializable {
 
 	public Boolean getEmVigencia() {
 		Date hoje = new Date();
-		return vigenciaInicio.compareTo(hoje)<0 && hoje.compareTo(vigenciaFim)<=0 ;
+		return vigenciaInicio.compareTo(hoje) < 0 && hoje.compareTo(vigenciaFim) <= 0;
 	}
 
 	public void setEmVigencia(Boolean emVigencia) {
 		this.emVigencia = emVigencia;
 	}
-
 
 	public int getDiasVigencia() {
 		Date hoje = new Date();
