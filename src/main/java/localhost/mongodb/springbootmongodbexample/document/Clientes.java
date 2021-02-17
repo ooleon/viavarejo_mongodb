@@ -1,5 +1,7 @@
 package localhost.mongodb.springbootmongodbexample.document;
 
+import java.util.Date;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -12,11 +14,35 @@ public class Clientes {
     private String nome;
     private String cidade;
     private String uf;
+
+    @Transient
+    private Date myDTransient;
+
+    @Transient
+    private Date myDTransient2;
+    
     
     @Transient
     private String myTransient;
 
-    public String getMyTransient() {
+    public Date getMyDTransient() {
+		return new Date();
+	}
+
+	public void setMyDTransient(Date myDTransient) {
+		this.myDTransient = myDTransient;
+	}
+
+	public Date getMyDTransient2() {
+		Date d = new Date(); d.setDate(1);
+		return d;
+	}
+
+	public void setMyDTransient2(Date myDTransient2) {
+		this.myDTransient2 = myDTransient2;
+	}
+
+	public String getMyTransient() {
 		return "mi";
 	}
 
@@ -41,7 +67,7 @@ public class Clientes {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("{cpf=").append(cpf).append(", nome=").append(nome).append(", cidade=").append(cidade)
-				.append(", uf=").append(uf).append("}");
+				.append(", uf=").append(uf).append(", myDTransient=").append(getMyDTransient()).append("}");
 		return builder.toString();
 	}
 
