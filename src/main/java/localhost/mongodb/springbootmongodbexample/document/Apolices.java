@@ -1,5 +1,8 @@
 package localhost.mongodb.springbootmongodbexample.document;
 
+import static org.mockito.Matchers.anyLong;
+
+import java.io.Serializable;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
@@ -7,8 +10,10 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
-public class Apolices {
-
+public class Apolices implements Serializable {
+	
+	private static final long serialVersionUID = 34535L;
+	
 	@Id
 	private Long numero;
 	private Date vigenciaInicio;
