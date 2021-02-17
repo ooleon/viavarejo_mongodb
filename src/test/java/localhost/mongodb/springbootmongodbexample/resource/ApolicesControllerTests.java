@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,14 +53,21 @@ public class ApolicesControllerTests {
 		// System.out.println(apolicesController.getAll());
 		// System.out.println(rEntity.getBody());
 //		String msg = this.restTemplate.getForObject(url, String.class);
-		List<Apolices> msg = (List<Apolices>) this.restTemplate.getForEntity(url, List.class.asSubclass(Apolices.class));
+		ResponseEntity<Object[]> responseEntity =  this.restTemplate
+				.getForEntity(url,  Object[].class);
+		
+		Object[] objects = responseEntity.getBody();
+//		MediaType contentType = responseEntity.getHeaders().getContentType();
+//		HttpStatus statusCode = responseEntity.getStatusCode();
+		
 		System.out.println("Apolices a = msg.get(0);");
-		Apolices a = msg.get(0);
+		Apolices a = (Apolices) objects[0];
+//		Apolices a = msg.get(0);
 		System.out.println("a.getNumero()");
 		System.out.println(a.getNumero());
 
 		System.out.println();
-		System.out.println(msg);
+//		System.out.println(msg);
 		System.out.println();
 	}
 
