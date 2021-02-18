@@ -147,7 +147,7 @@ public class ApolicesControllerTests {
 		restTemplate.postForEntity(
 				  "http://localhost:8095/rest/apolices/salvaraleatorio",
 				  apolices,
-				  ResponseEntity.class);
+				  Apolices.class);
 		
 		Apolices apoliceSalvada = apolicesService.findOne(numero);
 		
