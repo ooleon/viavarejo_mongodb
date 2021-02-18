@@ -125,16 +125,17 @@ public class ApolicesControllerTests {
 		System.out.println();
 		System.out.println("ApolicesControllerTests.getAll()");
 		String id="44445678902"; 
-		String url = "http://localhost:8095/rest/apolices/numero/"+id;
+		String url = "http://localhost:8095/rest/apolices/numero/"+id+"/";
 		System.out.println(url);
-		ResponseEntity<Apolices[]> responseEntity =
+		ResponseEntity<Apolices> responseEntity =
 				  restTemplate.getForEntity(
 					url,
-				  Apolices[].class);
+				  Apolices.class);
 		assertThat(responseEntity.getBody()).isNotNull();
 		
-		Apolices[] arrayApolices = responseEntity.getBody();
+		Apolices arrayApolices = responseEntity.getBody();
 		
+		/*
 		List<Apolices> listApolices = Arrays.asList(arrayApolices);
 		listApolices.stream().forEach((apolices)->{
 			System.out.println(apolices);
@@ -143,7 +144,8 @@ public class ApolicesControllerTests {
 		listApolices.stream().forEach((a)->{
 			System.out.println(a);
 		});
-		System.out.println();
+		*/
+		System.out.println(arrayApolices);
 	}
 	
 	/*
