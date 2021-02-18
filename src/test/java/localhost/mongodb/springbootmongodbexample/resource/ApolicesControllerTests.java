@@ -125,7 +125,7 @@ public class ApolicesControllerTests {
 		System.out.println();
 		System.out.println("ApolicesControllerTests.getAll()");
 		String id="44445678902"; 
-		String url = "http://localhost:8095/rest/apolices/apolices/"+id;
+		String url = "http://localhost:8095/rest/apolices/numero/"+id;
 		System.out.println(url);
 		ResponseEntity<Apolices[]> responseEntity =
 				  restTemplate.getForEntity(
