@@ -39,7 +39,7 @@ public class ApolicesController {
 
 	@RequestMapping(value = { "/salvaraleatorio" }, method = { RequestMethod.POST })
 	public ResponseEntity<Apolices> salvarNumeroRandom(@RequestBody Apolices a) {
-		return new ResponseEntity(this.apolicesService.save(a), HttpStatus.OK);
+		return new ResponseEntity(this.apolicesService.saveNumeroRandom(a), HttpStatus.OK);
 	}
 
     @GetMapping("/numero/{numero}")

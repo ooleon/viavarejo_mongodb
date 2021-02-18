@@ -159,7 +159,7 @@ public class ApolicesControllerTests {
 	public void salvaraleatorio() {
 		System.out.println();
 		System.out.println("ApolicesControllerTests.salvaraleatorio()");
-		Long numero=123321L;
+		Long numero=1111L;
 		Apolices apolices = new Apolices( numero, new Date(),  new Date(), "POST00", 345.5, 12341234L);
 		//postForObject(
 		restTemplate.postForEntity(
