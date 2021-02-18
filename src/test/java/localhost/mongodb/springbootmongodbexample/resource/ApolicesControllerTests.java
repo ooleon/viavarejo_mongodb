@@ -61,8 +61,8 @@ public class ApolicesControllerTests {
 				this.restTemplate.getForEntity(url, Object[].class);
 
 		System.out.println();
-		System.out.println("responseEntity.getBody()");
-		System.out.println(responseEntity.getBody());
+		System.out.println("responseEntity.getBody().length");
+		System.out.println(responseEntity.getBody().length);
 		
 		ResponseEntity<List<Apolices>> rateResponse = 
 				restTemplate.exchange(url, HttpMethod.GET, null,
