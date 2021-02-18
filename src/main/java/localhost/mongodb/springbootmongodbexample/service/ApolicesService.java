@@ -97,8 +97,8 @@ public class ApolicesService {
 	public ApoliceDetalhe findOneDetalle(Long numero){
 		Apolices a = apoliceRepository.findOne(numero);
 		Clientes c = clientesService.findOne(a.getCpfCliente());
-		ApoliceDetalhe
-		return apoliceRepository.findOne(numero);
+		ApoliceDetalhe apoliceDetalhe = new ApoliceDetalhe(a,c);
+		return apoliceDetalhe;
 	}
 	
 	public void delete(Long numero) {

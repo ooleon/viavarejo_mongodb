@@ -181,11 +181,15 @@ public class ApolicesControllerTests {
 	
 	@Test
 	public void apoliceDetalhe() {
-		Long numero=1111L;
+		Long numero=44445678902L;
 		Apolices apolices = new Apolices( numero, new Date(),  new Date(), "POST00", 345.5, 12341234L);
 		Clientes clientes = new Clientes(21234L,"Sao Paulo","Sao Paulo","SP"); 
 		ApoliceDetalhe apoliceDetalhe = new ApoliceDetalhe(apolices,clientes);
 		System.out.println("apoliceDetalhe: " + apoliceDetalhe.toString());
+		
+		ApoliceDetalhe apoliceDetalhe1 = apolicesService.findOneDetalle(numero);
+		System.out.println("\t serviço: " + apoliceDetalhe1.toString());
+		
 	}
 
 		
