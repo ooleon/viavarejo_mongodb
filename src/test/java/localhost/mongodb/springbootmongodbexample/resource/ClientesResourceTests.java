@@ -3,7 +3,10 @@ package localhost.mongodb.springbootmongodbexample.resource;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import localhost.mongodb.springbootmongodbexample.resource.UsersResource;
@@ -28,24 +31,97 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class ClientesResourceTests {
 	private final Logger logger = Logger.getLogger(this.getClass().getName());
+
+	@LocalServerPort
+	private int port;
+	@Autowired
+	private TestRestTemplate restTemplate;
 
 	@Autowired
 	private ClientesService clientesService;
 	@Autowired
 	private ClientesResource clientesResource;
-
-	// @GetMapping("/all")
+	
+	private Clientes clientes;
+	
 	@Test
-	public void findAllTest() {
-		logger.info("findAllTest");
+	public void getAll() {
+		System.out.println();
+		System.out.println("ClientesResourceTests.getAll()");
+		String url = "http://localhost:8095/rest/clientes/all";
+		String msg = this.restTemplate.getForObject(url, String.class);
+//		System.out.println(msg);
+//		System.out.println(url);
+		System.out.println();
+		
+		/*
+		 System.out.println("ResponseEntity <Object[]>"); 
+		 ResponseEntity<Object[]>
+		  responseEntity = this.restTemplate.getForEntity(url, Object[].class);
+		  
+		  System.out.println(); System.out.println("responseEntity.getBody().length");
+		  System.out.println(responseEntity.getBody().length);
+		  
+		  System.out.println("Object[] objs = rateResponse.getBody()"); Object[] objs=
+		  responseEntity.getBody(); System.out.println(); List<Apolices> listApolices =
+		  new ArrayList<Apolices>(); for (Object object : objs) {
+		  listApolices.add((Apolices) object) ; }
+		  System.out.println("for (Object object : objs)");
+		  
 
-		clientesResource.getAll();
+		ResponseEntity<List<Apolices>> responseEntity = restTemplate.exchange(url, HttpMethod.GET, null,
+				new ParameterizedTypeReference<List<Apolices>>() {
+				});
+		 */
+		
+
+/*
+ * 
+		ResponseEntity<Apolices[]> responseEntity1 = restTemplate.exchange(url, HttpMethod.GET, null,
+				new ParameterizedTypeReference<Apolices[]>() {
+				});
+		List<Apolices> la1= Arrays.asList(responseEntity1.getBody());
+		la1.toString();
+		System.out.println("responseEntity1" + responseEntity1.getStatusCodeValue());
+		Assert.assertTrue(responseEntity1.getStatusCodeValue()>=200 && responseEntity1.getStatusCodeValue()<=230);
+		Apolices[] Apolices1 = responseEntity1.getBody();
+*/
+
+		/*
+		ResponseEntity<Apolices[]> responseEntity2 =
+				  restTemplate.getForEntity(
+					url,
+				  Apolices[].class);
+		Apolices[] arrayApolices = responseEntity2.getBody();
+		List<Apolices> listApolices = Arrays.asList(arrayApolices);
+		listApolices.stream().forEach((apolices)->{
+			System.out.println(apolices);
+		});
+		System.out.println("responseEntity2");
+		*/
+		
+		Clientes[] responseEntity = this.restTemplate.getForObject(url, Clientes[].class);
+//		Assert.assertTrue(responseEntity != null);
+		assertThat(responseEntity).isNotNull();
+		List<Clientes> la= Arrays.asList(responseEntity);
+		System.out.println();
+		la.stream().forEach((a)->{
+			System.out.println(a);
+		});
+
 	}
+
+
+
+
 }
