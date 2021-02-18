@@ -60,7 +60,7 @@ public class ApolicesControllerTests {
 		// System.out.println(apolicesController.getAll());
 		// System.out.println(rEntity.getBody());
 		String msg = this.restTemplate.getForObject(url, String.class);
-		System.out.println(msg);
+//		System.out.println(msg);
 		System.out.println(url);
 		System.out.println();
 
@@ -87,6 +87,8 @@ public class ApolicesControllerTests {
 		
 //		Object[] forNow = template.getForObject("URL", Object[].class);
 
+/*
+ * 
 		ResponseEntity<Apolices[]> responseEntity1 = restTemplate.exchange(url, HttpMethod.GET, null,
 				new ParameterizedTypeReference<Apolices[]>() {
 				});
@@ -94,46 +96,33 @@ public class ApolicesControllerTests {
 		la1.toString();
 		System.out.println("responseEntity1" + responseEntity1.getStatusCodeValue());
 		Assert.assertTrue(responseEntity1.getStatusCodeValue()>=200 && responseEntity1.getStatusCodeValue()<=230);
-		
-		
 		Apolices[] Apolices1 = responseEntity1.getBody();
-		System.out.println("responseEntity1.getBody()");
+*/
 
+		/*
 		ResponseEntity<Apolices[]> responseEntity2 =
 				  restTemplate.getForEntity(
 					url,
 				  Apolices[].class);
-		Apolices[] a1 = responseEntity2.getBody();
+		Apolices[] arrayApolices = responseEntity2.getBody();
+		List<Apolices> listApolices = Arrays.asList(arrayApolices);
+		listApolices.stream().forEach((apolices)->{
+			System.out.println(apolices);
+		});
 		System.out.println("responseEntity2");
+		*/
 		
 		Apolices[] responseEntity = this.restTemplate.getForObject(url, Apolices[].class);
-		System.out.println("ParameterizedTypeReference<List<Apolices>>()");
+//		Assert.assertTrue(responseEntity != null);
+		assertThat(responseEntity).isNotNull();
 		List<Apolices> la= Arrays.asList(responseEntity);
-
-		System.out.println("List<Apolices> searchList= Arrays.asList(responseEntity.getBody())");
-		System.out.println(la.size());
-		System.out.println("la.stream().toString()");
 		System.out.println();
-		System.out.println(la.stream().toString());
+		la.stream().forEach((a)->{
+			System.out.println(a);
+		});
 		System.out.println();
-		System.out.println("listApolices");
-//		System.out.println("apolices[0]: " + listApolices.size());
-		System.out.println("listApolices");
-//		System.out.println("apolices[0]: " + listApolices.get(0).getNumero());
+		System.out.println("la.stream");
 
-		// Object[] objects = responseEntity.getBody();
-		// MediaType contentType = responseEntity.getHeaders().getContentType();
-		// HttpStatus statusCode = responseEntity.getStatusCode();
-
-		System.out.println("Apolices a = msg.get(0);");
-		// Apolices a = (Apolices) objects[0];
-		// Apolices a = msg.get(0);
-		System.out.println("a.getNumero()");
-		// System.out.println(a.getNumero());
-
-		System.out.println();
-		// System.out.println(msg);
-		System.out.println();
 	}
 
 	/*
