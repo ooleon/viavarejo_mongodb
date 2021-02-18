@@ -50,6 +50,10 @@ public class Clientes {
 		this.myTransient = myTransient;
 	}
 
+	public Clientes() {
+		
+	}
+	
 	/**
 	 * @param cpf
 	 * @param nome

@@ -18,13 +18,6 @@ public class Apolices implements Serializable {
 	private Date vigenciaFim;
 	private String placaVeiculo;
 	private Double valor;
-
-	@Transient
-	private Boolean emVigencia;
-
-	@Transient
-	private int diasVigencia;
-
 	/**
 	 * é por este campo de relacao com a entidade cliente que é usado um banco de
 	 * dados relacional de tipo SQL como Oracle, Postgres, Mysql, MsSqlServer, etc e
@@ -32,6 +25,14 @@ public class Apolices implements Serializable {
 	 * https://www.reddit.com/r/webdev/comments/45v12j/seriously_when_is_nosql_a_good_idea/
 	 */
 	private Long cpfCliente;
+	
+
+
+	@Transient
+	private Boolean emVigencia;
+
+	@Transient
+	private int diasVigencia;
 
 	
 	

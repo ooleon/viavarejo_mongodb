@@ -1,5 +1,6 @@
 package localhost.mongodb.springbootmongodbexample.service;
 
+import localhost.mongodb.springbootmongodbexample.document.ApoliceDetalhe;
 import localhost.mongodb.springbootmongodbexample.document.Apolices;
 import localhost.mongodb.springbootmongodbexample.document.Clientes;
 import localhost.mongodb.springbootmongodbexample.repository.ApoliceRepository;
@@ -33,6 +34,9 @@ public class ApolicesService {
     
 	@Autowired
 	private ApoliceRepository apoliceRepository;
+
+	@Autowired
+	private ClientesService clientesService;
 
 	public Apolices saveNumeroRandom(Apolices a) {
 		Long numero = generarIdRandom();
@@ -87,9 +91,16 @@ public class ApolicesService {
 	
 	public Apolices findOne(String id) {
 		Long numero = Long.valueOf(id);
-		return apoliceRepository.findOne(numero);
+		return this.findOne(numero);
 	}
 
+	public ApoliceDetalhe findOneDetalle(Long numero){
+		Apolices a = apoliceRepository.findOne(numero);
+		Clientes c = clientesService.findOne(a.getCpfCliente());
+		ApoliceDetalhe
+		return apoliceRepository.findOne(numero);
+	}
+	
 	public void delete(Long numero) {
 		apoliceRepository.delete(numero);
 		

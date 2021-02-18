@@ -1,5 +1,6 @@
 package localhost.mongodb.springbootmongodbexample.resource;
 
+import localhost.mongodb.springbootmongodbexample.document.ApoliceDetalhe;
 import localhost.mongodb.springbootmongodbexample.document.Apolices;
 
 import localhost.mongodb.springbootmongodbexample.document.Clientes;
@@ -153,6 +154,7 @@ public class ApolicesControllerTests {
 		
 		assertNotNull("no paso, esta apoliceSalvada esta nulo", apoliceSalvada);
 		System.out.println("salvado: " + apoliceSalvada);
+		System.out.println();
 	}
 	
 	@Test
@@ -161,9 +163,11 @@ public class ApolicesControllerTests {
 		System.out.println("ApolicesControllerTests.salvaraleatorio()");
 		Long numero=1111L;
 		Apolices apolices = new Apolices( numero, new Date(),  new Date(), "POST00", 345.5, 12341234L);
-		//postForObject(
+		System.out.println("Apolices cadastrado: " + apolices);
+		String url = "http://localhost:8095/rest/apolices/salvaraleatorio";
+		System.out.println(url);
 		ResponseEntity<Apolices> responseEntity = restTemplate.postForEntity(
-				  "http://localhost:8095/rest/apolices/salvaraleatorio",
+				  url,
 				  apolices,
 				  Apolices.class);
 		
@@ -171,14 +175,18 @@ public class ApolicesControllerTests {
 		
 		System.out.println("salvaraleatorio: " + apoliceSalvada);
 		System.out.println("numero: " +  numero + " diferente do aleatorio " + apoliceSalvada.getNumero());
+		System.out.println();
 	}
 	
 	
-	
-	/*
-	 * // @RequestMapping(value = { "/salvar" }, method = { RequestMethod.POST })
-	 * public ResponseEntity<Apolices> salvar(@RequestBody Apolices a) { return new
-	 * ResponseEntity(this.apolicesService.save(a), HttpStatus.OK); }
-	 * 
-	 */
+	@Test
+	public void apoliceDetalhe() {
+		Long numero=1111L;
+		Apolices apolices = new Apolices( numero, new Date(),  new Date(), "POST00", 345.5, 12341234L);
+		Clientes clientes = new Clientes(21234L,"Sao Paulo","Sao Paulo","SP"); 
+		ApoliceDetalhe apoliceDetalhe = new ApoliceDetalhe(apolices,clientes);
+		System.out.println("apoliceDetalhe: " + apoliceDetalhe.toString());
+	}
+
+		
 }
