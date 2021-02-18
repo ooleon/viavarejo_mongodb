@@ -87,7 +87,7 @@ public class ApolicesControllerTests {
 
 		ResponseEntity<Apolices[]> responseEntity2 =
 				  restTemplate.getForEntity(
-				  "http://localhost:8080/employees/",
+					url,
 				  Apolices[].class);
 		Apolices[] employees = responseEntity2.getBody();
 		System.out.println("responseEntity2");
