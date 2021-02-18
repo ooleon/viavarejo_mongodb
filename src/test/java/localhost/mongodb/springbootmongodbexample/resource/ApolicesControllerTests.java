@@ -6,6 +6,7 @@ import localhost.mongodb.springbootmongodbexample.document.Clientes;
 import localhost.mongodb.springbootmongodbexample.repository.ApoliceRepository;
 import localhost.mongodb.springbootmongodbexample.service.ApolicesService;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,7 +90,11 @@ public class ApolicesControllerTests {
 		ResponseEntity<Apolices[]> responseEntity1 = restTemplate.exchange(url, HttpMethod.GET, null,
 				new ParameterizedTypeReference<Apolices[]>() {
 				});
-		System.out.println("responseEntity1");
+		List<Apolices> la1= Arrays.asList(responseEntity1.getBody());
+		la1.toString();
+		System.out.println("responseEntity1" + responseEntity1.getStatusCodeValue());
+		Assert.assertEquals(201, responseEntity1.getStatusCodeValue());
+		
 		
 		Apolices[] Apolices1 = responseEntity1.getBody();
 		System.out.println("responseEntity1.getBody()");
