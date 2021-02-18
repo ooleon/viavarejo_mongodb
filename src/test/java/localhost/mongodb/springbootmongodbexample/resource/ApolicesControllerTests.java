@@ -108,17 +108,13 @@ public class ApolicesControllerTests {
 		
 		Apolices[] responseEntity = this.restTemplate.getForObject(url, Apolices[].class);
 		System.out.println("ParameterizedTypeReference<List<Apolices>>()");
-		List<Apolices> searchList= Arrays.asList(responseEntity);
+		List<Apolices> la= Arrays.asList(responseEntity);
 
 		System.out.println("List<Apolices> searchList= Arrays.asList(responseEntity.getBody())");
-		System.out.println(searchList.size());
-		System.out.println("searchList.size()");
-//		System.out.println(responseEntity.getBody().length);
+		System.out.println(la.size());
+		System.out.println("la.stream().toString()");
 		System.out.println();
-		System.out.println("List<Apolices> listApolices = rateResponse.getBody()");
-//		List<Apolices> listApolices = responseEntity.getBody();
-//		Apolices[] listApolices = responseEntity.getBody();
-		// listApolices = rateResponse.getBody();
+		System.out.println(la.stream().toString());
 		System.out.println();
 		System.out.println("listApolices");
 //		System.out.println("apolices[0]: " + listApolices.size());
