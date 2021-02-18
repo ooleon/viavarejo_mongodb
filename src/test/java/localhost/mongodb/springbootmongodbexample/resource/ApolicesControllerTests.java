@@ -140,11 +140,12 @@ public class ApolicesControllerTests {
 	@Test
 	public void salvar() {
 		System.out.println();
-		System.out.println("ApolicesControllerTests.getApolicesById()");
+		System.out.println("ApolicesControllerTests.salvar()");
 		Long numero=123321L;
 		Apolices apolices = new Apolices( numero, new Date(),  new Date(), "POST00", 345.5, 12341234L);
-		restTemplate.postForObject(
-				  "http://localhost:8095/rest/apolices/salvarAleatorio",
+		//postForObject(
+		restTemplate.postForEntity(
+				  "http://localhost:8095/rest/apolices/salvaraleatorio",
 				  apolices,
 				  ResponseEntity.class);
 		

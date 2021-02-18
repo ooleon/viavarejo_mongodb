@@ -35,6 +35,10 @@ public class Apolices implements Serializable {
 
 	
 	
+	public Apolices() {
+		
+	}
+	
 	
 	@Override
 	public String toString() {
@@ -46,8 +50,30 @@ public class Apolices implements Serializable {
 		return builder.toString();
 	}
 
-	
+
 	/**
+	 * @param numero
+	 * @param vigenciaInicio
+	 * @param vigenciaFim
+	 * @param placaVeiculo
+	 * @param valor
+	 * @param cpfCliente
+	 */
+	public Apolices(Long numero, Date vigenciaInicio, Date vigenciaFim,
+			String placaVeiculo, Double valor, Long cpfCliente) {
+		this.numero = numero;
+		this.vigenciaInicio = vigenciaInicio;
+		this.vigenciaFim = vigenciaFim;
+		this.placaVeiculo = placaVeiculo;
+		this.valor = valor;
+		this.emVigencia = emVigencia;
+		this.diasVigencia = diasVigencia;
+		this.cpfCliente = cpfCliente;
+	}
+
+
+	
+	/* *
 	 * @param numero
 	 * @param vigenciaInicio
 	 * @param vigenciaFim
@@ -70,30 +96,8 @@ public class Apolices implements Serializable {
 	}
 */
 	
-	public Apolices() {
-		
-	}
 	
-	/**
-	 * @param numero
-	 * @param vigenciaInicio
-	 * @param vigenciaFim
-	 * @param placaVeiculo
-	 * @param valor
-	 * @param cpfCliente
-	 */
-	public Apolices(Long numero, Date vigenciaInicio, Date vigenciaFim, String placaVeiculo, Double valor,
-			Long cpfCliente) {
-		this.numero = numero;
-		this.vigenciaInicio = vigenciaInicio;
-		this.vigenciaFim = vigenciaFim;
-		this.placaVeiculo = placaVeiculo;
-		this.valor = valor;
-		this.emVigencia = emVigencia;
-		this.diasVigencia = diasVigencia;
-		this.cpfCliente = cpfCliente;
-	}
-
+	
 	/*
 	 * @Override public String toString() { StringBuilder builder = new
 	 * StringBuilder();

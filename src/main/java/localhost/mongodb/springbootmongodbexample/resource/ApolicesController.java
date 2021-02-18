@@ -37,7 +37,7 @@ public class ApolicesController {
 		return new ResponseEntity(this.apolicesService.save(a), HttpStatus.OK);
 	}
 
-	@RequestMapping(value = { "/salvarAleatorio" }, method = { RequestMethod.POST })
+	@RequestMapping(value = { "/salvaraleatorio" }, method = { RequestMethod.POST })
 	public ResponseEntity<Apolices> salvarNumeroRandom(@RequestBody Apolices a) {
 		return new ResponseEntity(this.apolicesService.save(a), HttpStatus.OK);
 	}
