@@ -81,10 +81,18 @@ public class ApolicesControllerTests {
 		ResponseEntity<List<Apolices>> responseEntity = restTemplate.exchange(url, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<Apolices>>() {
 				});
-
 		 */
+		
 //		Object[] forNow = template.getForObject("URL", Object[].class);
-		 Apolices[] responseEntity = this.restTemplate.getForObject(url, Apolices[].class);
+
+		ResponseEntity<Apolices[]> responseEntity2 =
+				  restTemplate.getForEntity(
+				  "http://localhost:8080/employees/",
+				  Apolices[].class);
+		Apolices[] employees = responseEntity2.getBody();
+		System.out.println("responseEntity2");
+		
+		Apolices[] responseEntity = this.restTemplate.getForObject(url, Apolices[].class);
 		System.out.println("ParameterizedTypeReference<List<Apolices>>()");
 		List<Apolices> searchList= Arrays.asList(responseEntity);
 		System.out.println("List<Apolices> searchList= Arrays.asList(responseEntity.getBody())");

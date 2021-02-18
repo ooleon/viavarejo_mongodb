@@ -70,6 +70,10 @@ public class Apolices implements Serializable {
 	}
 */
 	
+	public Apolices() {
+		
+	}
+	
 	/**
 	 * @param numero
 	 * @param vigenciaInicio
