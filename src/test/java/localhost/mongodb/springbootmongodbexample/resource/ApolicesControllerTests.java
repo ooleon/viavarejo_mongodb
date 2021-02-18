@@ -84,19 +84,18 @@ public class ApolicesControllerTests {
 
 		 */
 //		Object[] forNow = template.getForObject("URL", Object[].class);
-		 ResponseEntity<Apolices[]>
-		  responseEntity = this.restTemplate.getForEntity(url, Apolices[].class);
+		 Apolices[] responseEntity = this.restTemplate.getForObject(url, Apolices[].class);
 		System.out.println("ParameterizedTypeReference<List<Apolices>>()");
-		List<Apolices> searchList= Arrays.asList(responseEntity.getBody());
+		List<Apolices> searchList= Arrays.asList(responseEntity);
 		System.out.println("List<Apolices> searchList= Arrays.asList(responseEntity.getBody())");
 		System.out.println();
 		System.out.println("responseEntity.getBody().size()");
-//		System.out.println(responseEntity.getBody().size());
-		System.out.println(responseEntity.getBody().length);
+		System.out.println(searchList.size());
+//		System.out.println(responseEntity.getBody().length);
 		System.out.println();
 		System.out.println("List<Apolices> listApolices = rateResponse.getBody()");
 //		List<Apolices> listApolices = responseEntity.getBody();
-		Apolices[] listApolices = responseEntity.getBody();
+//		Apolices[] listApolices = responseEntity.getBody();
 		// listApolices = rateResponse.getBody();
 		System.out.println();
 		System.out.println("listApolices");
