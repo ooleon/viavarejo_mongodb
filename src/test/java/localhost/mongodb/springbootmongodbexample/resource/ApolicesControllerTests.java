@@ -127,12 +127,20 @@ public class ApolicesControllerTests {
 		String id="44445678902"; 
 		String url = "http://localhost:8095/rest/apolices/apolices/"+id;
 		System.out.println(url);
-		Apolices[] responseEntity = this.restTemplate.getForObject(url, Apolices[].class);
-//		Assert.assertTrue(responseEntity != null);
-		assertThat(responseEntity).isNotNull();
-		List<Apolices> la= Arrays.asList(responseEntity);
-		System.out.println();
-		la.stream().forEach((a)->{
+		ResponseEntity<Apolices[]> responseEntity =
+				  restTemplate.getForEntity(
+					url,
+				  Apolices[].class);
+		assertThat(responseEntity.getBody()).isNotNull();
+		
+		Apolices[] arrayApolices = responseEntity.getBody();
+		
+		List<Apolices> listApolices = Arrays.asList(arrayApolices);
+		listApolices.stream().forEach((apolices)->{
+			System.out.println(apolices);
+		});
+		
+		listApolices.stream().forEach((a)->{
 			System.out.println(a);
 		});
 		System.out.println();
