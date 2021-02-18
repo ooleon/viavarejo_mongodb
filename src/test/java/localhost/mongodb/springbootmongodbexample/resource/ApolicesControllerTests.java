@@ -69,8 +69,8 @@ public class ApolicesControllerTests {
 				new ParameterizedTypeReference<List<Apolices>>() {
 				});
 		System.out.println();
-		System.out.println("rateResponse.getBody()");
-		System.out.println(rateResponse.getBody());
+		System.out.println("rateResponse.getBody().size()");
+		System.out.println(rateResponse.getBody().size());
 		System.out.println();
 		System.out.println("List<Apolices> listApolices = rateResponse.getBody()");
 		List<Apolices> listApolices = rateResponse.getBody();
