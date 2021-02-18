@@ -47,6 +47,9 @@ jobs:
         id: springboot_test_ApolicesControllerTests
         run: mvn test -B -Dtest=ApolicesControllerTests test
 
+      - name: Test springboot ClientesResourceTests
+        id: springboot_test_ClientesResourceTests
+        run: mvn test -B -Dtest=ClientesResourceTests test
 
 
 
