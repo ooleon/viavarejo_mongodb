@@ -162,16 +162,15 @@ public class ApolicesControllerTests {
 		Long numero=1111L;
 		Apolices apolices = new Apolices( numero, new Date(),  new Date(), "POST00", 345.5, 12341234L);
 		//postForObject(
-		restTemplate.postForEntity(
+		ResponseEntity<Apolices> responseEntity = restTemplate.postForEntity(
 				  "http://localhost:8095/rest/apolices/salvaraleatorio",
 				  apolices,
 				  Apolices.class);
 		
-		Apolices apoliceSalvada = apolicesService.findOne(numero);
+		Apolices apoliceSalvada = responseEntity.getBody();
 		
-		assertNotNull("no paso, esta apoliceSalvada esta nulo", apoliceSalvada);
 		System.out.println("salvaraleatorio: " + apoliceSalvada);
-		System.out.println("numero: " + 123321L + " diferente do aleatorio " + apoliceSalvada.getNumero());
+		System.out.println("numero: " +  numero + " diferente do aleatorio " + apoliceSalvada.getNumero());
 	}
 	
 	
