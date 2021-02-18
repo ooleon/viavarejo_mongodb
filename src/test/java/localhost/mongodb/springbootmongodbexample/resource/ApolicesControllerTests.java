@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -67,7 +68,7 @@ public class ApolicesControllerTests {
 		System.out.println("Object[] objs = rateResponse.getBody()");
 		Object[] objs= responseEntity.getBody();
 		System.out.println();
-		List<Apolices> listApolices;
+		List<Apolices> listApolices = new ArrayList<Apolices>();
 		for (Object object : objs) {
 			listApolices.add((Apolices) object) ;
 		} 
@@ -83,7 +84,8 @@ public class ApolicesControllerTests {
 		System.out.println(rateResponse.getBody().size());
 		System.out.println();
 		System.out.println("List<Apolices> listApolices = rateResponse.getBody()");
-		List<Apolices> listApolices = rateResponse.getBody();
+//		List<Apolices> listApolices = rateResponse.getBody();
+		listApolices = rateResponse.getBody();
 		System.out.println();
 		System.out.println("listApolices");
 		System.out.println("apolices[0]: " + listApolices.size());
