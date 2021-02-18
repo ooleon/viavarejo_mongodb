@@ -1,6 +1,7 @@
 package localhost.mongodb.springbootmongodbexample.resource;
 
 import localhost.mongodb.springbootmongodbexample.document.Apolices;
+
 import localhost.mongodb.springbootmongodbexample.document.Clientes;
 import localhost.mongodb.springbootmongodbexample.repository.ApoliceRepository;
 import localhost.mongodb.springbootmongodbexample.service.ApolicesService;
@@ -29,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -85,20 +86,28 @@ public class ApolicesControllerTests {
 		
 //		Object[] forNow = template.getForObject("URL", Object[].class);
 
+		ResponseEntity<Apolices[]> responseEntity1 = restTemplate.exchange(url, HttpMethod.GET, null,
+				new ParameterizedTypeReference<Apolices[]>() {
+				});
+		System.out.println("responseEntity1");
+		
+		Apolices[] Apolices1 = responseEntity1.getBody();
+		System.out.println("responseEntity1.getBody()");
+
 		ResponseEntity<Apolices[]> responseEntity2 =
 				  restTemplate.getForEntity(
 					url,
 				  Apolices[].class);
-		Apolices[] employees = responseEntity2.getBody();
+		Apolices[] a1 = responseEntity2.getBody();
 		System.out.println("responseEntity2");
 		
 		Apolices[] responseEntity = this.restTemplate.getForObject(url, Apolices[].class);
 		System.out.println("ParameterizedTypeReference<List<Apolices>>()");
 		List<Apolices> searchList= Arrays.asList(responseEntity);
+
 		System.out.println("List<Apolices> searchList= Arrays.asList(responseEntity.getBody())");
-		System.out.println();
-		System.out.println("responseEntity.getBody().size()");
 		System.out.println(searchList.size());
+		System.out.println("searchList.size()");
 //		System.out.println(responseEntity.getBody().length);
 		System.out.println();
 		System.out.println("List<Apolices> listApolices = rateResponse.getBody()");
