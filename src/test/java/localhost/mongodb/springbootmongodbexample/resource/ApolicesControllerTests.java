@@ -16,6 +16,7 @@ import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,55 +56,60 @@ public class ApolicesControllerTests {
 
 		// System.out.println(apolicesController.getAll());
 		// System.out.println(rEntity.getBody());
-		// String msg = this.restTemplate.getForObject(url, String.class);
+		String msg = this.restTemplate.getForObject(url, String.class);
+		System.out.println(msg);
+		System.out.println(url);
 		System.out.println();
+
+		
 		/*
-		System.out.println("ResponseEntity <Object[]>");
-		ResponseEntity<Object[]> responseEntity = 
-				this.restTemplate.getForEntity(url, Object[].class);
+		 System.out.println("ResponseEntity <Object[]>"); 
+		 ResponseEntity<Object[]>
+		  responseEntity = this.restTemplate.getForEntity(url, Object[].class);
+		  
+		  System.out.println(); System.out.println("responseEntity.getBody().length");
+		  System.out.println(responseEntity.getBody().length);
+		  
+		  System.out.println("Object[] objs = rateResponse.getBody()"); Object[] objs=
+		  responseEntity.getBody(); System.out.println(); List<Apolices> listApolices =
+		  new ArrayList<Apolices>(); for (Object object : objs) {
+		  listApolices.add((Apolices) object) ; }
+		  System.out.println("for (Object object : objs)");
+		  
 
-		System.out.println();
-		System.out.println("responseEntity.getBody().length");
-		System.out.println(responseEntity.getBody().length);
-		
-		System.out.println("Object[] objs = rateResponse.getBody()");
-		Object[] objs= responseEntity.getBody();
-		System.out.println();
-		List<Apolices> listApolices = new ArrayList<Apolices>();
-		for (Object object : objs) {
-			listApolices.add((Apolices) object) ;
-		} 
-		System.out.println("for (Object object : objs)");
-
-		*/
-		
-		System.out.println("ParameterizedTypeReference<List<Apolices>>()");
-		ResponseEntity<List<Apolices>> rateResponse = 
-				restTemplate.exchange(url, HttpMethod.GET, null,
+		ResponseEntity<List<Apolices>> responseEntity = restTemplate.exchange(url, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<Apolices>>() {
 				});
+
+		 */
+//		
+		 ResponseEntity<Apolices[]>
+		  responseEntity = this.restTemplate.getForEntity(url, Apolices[].class);
+		System.out.println("ParameterizedTypeReference<List<Apolices>>()");
 		System.out.println();
-		System.out.println("rateResponse.getBody().size()");
-		System.out.println(rateResponse.getBody().size());
+		System.out.println("responseEntity.getBody().size()");
+//		System.out.println(responseEntity.getBody().size());
+		System.out.println(responseEntity.getBody().length);
 		System.out.println();
 		System.out.println("List<Apolices> listApolices = rateResponse.getBody()");
-		List<Apolices> listApolices = rateResponse.getBody();
-//		listApolices = rateResponse.getBody();
+//		List<Apolices> listApolices = responseEntity.getBody();
+		Apolices[] listApolices = responseEntity.getBody();
+		// listApolices = rateResponse.getBody();
 		System.out.println();
 		System.out.println("listApolices");
-		System.out.println("apolices[0]: " + listApolices.size());
+//		System.out.println("apolices[0]: " + listApolices.size());
 		System.out.println("listApolices");
-		System.out.println("apolices[0]: " + listApolices.get(0).getNumero());
+//		System.out.println("apolices[0]: " + listApolices.get(0).getNumero());
 
-//		Object[] objects = responseEntity.getBody();
+		// Object[] objects = responseEntity.getBody();
 		// MediaType contentType = responseEntity.getHeaders().getContentType();
 		// HttpStatus statusCode = responseEntity.getStatusCode();
 
 		System.out.println("Apolices a = msg.get(0);");
-//		Apolices a = (Apolices) objects[0];
+		// Apolices a = (Apolices) objects[0];
 		// Apolices a = msg.get(0);
 		System.out.println("a.getNumero()");
-//		System.out.println(a.getNumero());
+		// System.out.println(a.getNumero());
 
 		System.out.println();
 		// System.out.println(msg);
