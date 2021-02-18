@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RestController;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -82,10 +83,12 @@ public class ApolicesControllerTests {
 				});
 
 		 */
-//		
+//		Object[] forNow = template.getForObject("URL", Object[].class);
 		 ResponseEntity<Apolices[]>
 		  responseEntity = this.restTemplate.getForEntity(url, Apolices[].class);
 		System.out.println("ParameterizedTypeReference<List<Apolices>>()");
+		List<Apolices> searchList= Arrays.asList(responseEntity.getBody());
+		System.out.println("List<Apolices> searchList= Arrays.asList(responseEntity.getBody())");
 		System.out.println();
 		System.out.println("responseEntity.getBody().size()");
 //		System.out.println(responseEntity.getBody().size());
