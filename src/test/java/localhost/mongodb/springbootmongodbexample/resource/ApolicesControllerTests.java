@@ -54,11 +54,7 @@ public class ApolicesControllerTests {
 		System.out.println("ApolicesControllerTests.getAll()");
 		String url = "http://localhost:8095/rest/apolices/all";
 		System.out.println(url);
-		// ResponseEntity rEntity = apolicesController.getAll();
-		// assertThat().isNotNull();
 
-		// System.out.println(apolicesController.getAll());
-		// System.out.println(rEntity.getBody());
 		String msg = this.restTemplate.getForObject(url, String.class);
 //		System.out.println(msg);
 		System.out.println(url);
@@ -85,7 +81,6 @@ public class ApolicesControllerTests {
 				});
 		 */
 		
-//		Object[] forNow = template.getForObject("URL", Object[].class);
 
 /*
  * 
@@ -125,6 +120,24 @@ public class ApolicesControllerTests {
 
 	}
 
+	@Test
+	public void getApolicesById() {
+		System.out.println();
+		System.out.println("ApolicesControllerTests.getAll()");
+		String id="44445678902"; 
+		String url = "http://localhost:8095/rest/apolices/apolices/"+id;
+		System.out.println(url);
+		Apolices[] responseEntity = this.restTemplate.getForObject(url, Apolices[].class);
+//		Assert.assertTrue(responseEntity != null);
+		assertThat(responseEntity).isNotNull();
+		List<Apolices> la= Arrays.asList(responseEntity);
+		System.out.println();
+		la.stream().forEach((a)->{
+			System.out.println(a);
+		});
+		System.out.println();
+	}
+	
 	/*
 	 * // @RequestMapping(value = { "/salvar" }, method = { RequestMethod.POST })
 	 * public ResponseEntity<Apolices> salvar(@RequestBody Apolices a) { return new
