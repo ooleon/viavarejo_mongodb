@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 import java.util.*;
@@ -47,17 +48,18 @@ public class ApolicesControllerTests {
 
 	@Autowired
 	ApolicesController apolicesController;
+	@Autowired
+	ApolicesService apolicesService;
+
 
 	@Test
 	public void getAll() {
 		System.out.println();
 		System.out.println("ApolicesControllerTests.getAll()");
 		String url = "http://localhost:8095/rest/apolices/all";
-		System.out.println(url);
-
 		String msg = this.restTemplate.getForObject(url, String.class);
 //		System.out.println(msg);
-		System.out.println(url);
+//		System.out.println(url);
 		System.out.println();
 
 		
@@ -115,15 +117,13 @@ public class ApolicesControllerTests {
 		la.stream().forEach((a)->{
 			System.out.println(a);
 		});
-		System.out.println();
-		System.out.println("la.stream");
 
 	}
 
 	@Test
 	public void getApolicesById() {
 		System.out.println();
-		System.out.println("ApolicesControllerTests.getAll()");
+		System.out.println("ApolicesControllerTests.getApolicesById()");
 		String id="44445678902"; 
 		String url = "http://localhost:8095/rest/apolices/numero/"+id+"/";
 		System.out.println(url);
@@ -131,21 +131,27 @@ public class ApolicesControllerTests {
 				  restTemplate.getForEntity(
 					url,
 				  Apolices.class);
-		assertThat(responseEntity.getBody()).isNotNull();
+		assertNotNull("no paso, esta responseEntity.getBody() esta nulo", responseEntity.getBody());
 		
-		Apolices arrayApolices = responseEntity.getBody();
+		Apolices apolices = responseEntity.getBody();
+		System.out.println(apolices);
+	}
+
+	@Test
+	public void salvar() {
+		System.out.println();
+		System.out.println("ApolicesControllerTests.getApolicesById()");
+		Long numero=123321L;
+		Apolices apolices = new Apolices( numero, new Date(),  new Date(), "POST00", 345.5, 12341234L);
+		restTemplate.postForObject(
+				  "http://localhost:8095/rest/apolices/salvarAleatorio",
+				  apolices,
+				  ResponseEntity.class);
 		
-		/*
-		List<Apolices> listApolices = Arrays.asList(arrayApolices);
-		listApolices.stream().forEach((apolices)->{
-			System.out.println(apolices);
-		});
+		Apolices apoliceSalvada = apolicesService.findOne(numero);
 		
-		listApolices.stream().forEach((a)->{
-			System.out.println(a);
-		});
-		*/
-		System.out.println(arrayApolices);
+		assertNotNull("no paso, esta apoliceSalvada esta nulo", apoliceSalvada);
+		System.out.println("salvado: " + apoliceSalvada);
 	}
 	
 	/*
@@ -153,9 +159,5 @@ public class ApolicesControllerTests {
 	 * public ResponseEntity<Apolices> salvar(@RequestBody Apolices a) { return new
 	 * ResponseEntity(this.apolicesService.save(a), HttpStatus.OK); }
 	 * 
-	 * // @GetMapping("/apolices/{id}") public Apolices
-	 * getApolicesById(@PathVariable("id") String id) {
-	 * 
-	 * return apolicesService.findOne(id); }
 	 */
 }
