@@ -41,8 +41,8 @@ public class Apolices implements Serializable {
 		StringBuilder builder = new StringBuilder();
 		builder.append("{numero=").append(numero).append(", vigenciaInicio=").append(vigenciaInicio)
 				.append(", vigenciaFim=").append(vigenciaFim).append(", placaVeiculo=").append(placaVeiculo)
-				.append(", valor=").append(valor).append(", emVigencia=").append(emVigencia).append(", diasVigencia=")
-				.append(diasVigencia).append(", cpfCliente=").append(cpfCliente).append("}");
+				.append(", valor=").append(valor).append(", emVigencia=").append(getEmVigencia()).append(", diasVigencia=")
+				.append(getDiasVigencia()).append(", cpfCliente=").append(cpfCliente).append("}");
 		return builder.toString();
 	}
 
@@ -56,7 +56,7 @@ public class Apolices implements Serializable {
 	 * @param emVigencia
 	 * @param diasVigencia
 	 * @param cpfCliente
-	 */
+	 * /
 	public Apolices(Long numero, Date vigenciaInicio, Date vigenciaFim, String placaVeiculo, Double valor,
 			Boolean emVigencia, int diasVigencia, Long cpfCliente) {
 		this.numero = numero;
@@ -68,7 +68,8 @@ public class Apolices implements Serializable {
 		this.diasVigencia = diasVigencia;
 		this.cpfCliente = cpfCliente;
 	}
-
+*/
+	
 	/**
 	 * @param numero
 	 * @param vigenciaInicio
