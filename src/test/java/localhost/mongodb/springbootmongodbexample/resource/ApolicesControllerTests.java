@@ -64,6 +64,16 @@ public class ApolicesControllerTests {
 		System.out.println("responseEntity.getBody().length");
 		System.out.println(responseEntity.getBody().length);
 		
+		System.out.println("Object[] objs = rateResponse.getBody()");
+		Object[] objs= responseEntity.getBody();
+		System.out.println();
+		List<Apolices> listApolices;
+		for (Object object : objs) {
+			listApolices.add((Apolices) object) ;
+		} 
+		System.out.println("for (Object object : objs)");
+
+		
 		ResponseEntity<List<Apolices>> rateResponse = 
 				restTemplate.exchange(url, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<Apolices>>() {
