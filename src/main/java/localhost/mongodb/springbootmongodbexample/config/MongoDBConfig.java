@@ -34,7 +34,7 @@ public class MongoDBConfig {
 			clienteRepository.save(new Clientes(12345678901L, "Joao", "Curitiba", "PR"));
 			clienteRepository.save(new Clientes(12345678902L, "Maria", "Sao Paulo", "SP"));
 			clienteRepository.save(new Clientes(12345678903L, "Ana", "Rio de Janeiro", "RJ"));
-			clienteRepository.save(new Clientes(12345678904L, "Ana", "Rio de Janeiro", "RJ"));
+			clienteRepository.save(new Clientes(12345678904L, "Melisa", "Rio de Janeiro", "RJ"));
 
 			Date d01 = new Date(); d01.setDate(1);
 			Date d28 = new Date(); d28.setDate(28);

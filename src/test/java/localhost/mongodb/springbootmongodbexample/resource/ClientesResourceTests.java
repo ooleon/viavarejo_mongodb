@@ -32,8 +32,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -56,62 +58,12 @@ public class ClientesResourceTests {
 	
 	@Test
 	public void getAll() {
-		System.out.println();
-		System.out.println("ClientesResourceTests.getAll()");
+		System.out.println("\nClientesResourceTests.getAll()");
 		String url = "http://localhost:8095/rest/clientes/all";
 		String msg = this.restTemplate.getForObject(url, String.class);
-//		System.out.println(msg);
-//		System.out.println(url);
-		System.out.println();
-		
-		/*
-		 System.out.println("ResponseEntity <Object[]>"); 
-		 ResponseEntity<Object[]>
-		  responseEntity = this.restTemplate.getForEntity(url, Object[].class);
-		  
-		  System.out.println(); System.out.println("responseEntity.getBody().length");
-		  System.out.println(responseEntity.getBody().length);
-		  
-		  System.out.println("Object[] objs = rateResponse.getBody()"); Object[] objs=
-		  responseEntity.getBody(); System.out.println(); List<Apolices> listApolices =
-		  new ArrayList<Apolices>(); for (Object object : objs) {
-		  listApolices.add((Apolices) object) ; }
-		  System.out.println("for (Object object : objs)");
-		  
-
-		ResponseEntity<List<Apolices>> responseEntity = restTemplate.exchange(url, HttpMethod.GET, null,
-				new ParameterizedTypeReference<List<Apolices>>() {
-				});
-		 */
-		
-
-/*
- * 
-		ResponseEntity<Apolices[]> responseEntity1 = restTemplate.exchange(url, HttpMethod.GET, null,
-				new ParameterizedTypeReference<Apolices[]>() {
-				});
-		List<Apolices> la1= Arrays.asList(responseEntity1.getBody());
-		la1.toString();
-		System.out.println("responseEntity1" + responseEntity1.getStatusCodeValue());
-		Assert.assertTrue(responseEntity1.getStatusCodeValue()>=200 && responseEntity1.getStatusCodeValue()<=230);
-		Apolices[] Apolices1 = responseEntity1.getBody();
-*/
-
-		/*
-		ResponseEntity<Apolices[]> responseEntity2 =
-				  restTemplate.getForEntity(
-					url,
-				  Apolices[].class);
-		Apolices[] arrayApolices = responseEntity2.getBody();
-		List<Apolices> listApolices = Arrays.asList(arrayApolices);
-		listApolices.stream().forEach((apolices)->{
-			System.out.println(apolices);
-		});
-		System.out.println("responseEntity2");
-		*/
 		
 		Clientes[] responseEntity = this.restTemplate.getForObject(url, Clientes[].class);
-//		Assert.assertTrue(responseEntity != null);
+
 		assertThat(responseEntity).isNotNull();
 		List<Clientes> la= Arrays.asList(responseEntity);
 		System.out.println();
@@ -121,6 +73,41 @@ public class ClientesResourceTests {
 
 	}
 
+	@Test
+	public void getClientesById() {
+		System.out.println();
+		System.out.println("ClientesResourceTests.getClientesById()");
+		String id="44445678902"; 
+		String url = "http://localhost:8095/rest/clientes/id/"+id+"/";
+		System.out.println(url);
+		ResponseEntity<Clientes> responseEntity =
+				  restTemplate.getForEntity(
+					url,
+					Clientes.class);
+		assertNotNull("no paso, esta responseEntity.getBody() esta nulo", responseEntity.getBody());
+		
+		Clientes clientes = responseEntity.getBody();
+		System.out.println(clientes);
+	}
+
+	@Test
+	public void salvar() {
+		System.out.println();
+		System.out.println("ClientesResourceTests.salvar()");
+		Long numero=12345678955L;
+		Clientes clientes  = new Clientes( numero, "Lisbeth", "Mato Groso", "MG");
+
+		restTemplate.postForEntity(
+				  "http://localhost:8095/rest/clientes/salvar",
+				  clientes,
+				  Clientes.class);
+		
+		Clientes clientesSalvada = clientesService.findOne(numero);
+		
+		assertNotNull("no paso, esta clientesSalvada esta nulo", clientesSalvada);
+		System.out.println("salvado: " + clientesSalvada);
+		System.out.println();
+	}
 
 
 
