@@ -77,7 +77,7 @@ public class ClientesResourceTests {
 	public void getClientesById() {
 		System.out.println();
 		System.out.println("ClientesResourceTests.getClientesById()");
-		String id="44445678902"; 
+		String id="12345678902"; 
 		String url = "http://localhost:8095/rest/clientes/id/"+id+"/";
 		System.out.println(url);
 		ResponseEntity<Clientes> responseEntity =
