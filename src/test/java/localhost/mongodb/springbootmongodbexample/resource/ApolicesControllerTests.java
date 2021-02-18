@@ -57,6 +57,7 @@ public class ApolicesControllerTests {
 		// System.out.println(rEntity.getBody());
 		// String msg = this.restTemplate.getForObject(url, String.class);
 		System.out.println();
+		/*
 		System.out.println("ResponseEntity <Object[]>");
 		ResponseEntity<Object[]> responseEntity = 
 				this.restTemplate.getForEntity(url, Object[].class);
@@ -74,7 +75,9 @@ public class ApolicesControllerTests {
 		} 
 		System.out.println("for (Object object : objs)");
 
+		*/
 		
+		System.out.println("ParameterizedTypeReference<List<Apolices>>()");
 		ResponseEntity<List<Apolices>> rateResponse = 
 				restTemplate.exchange(url, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<Apolices>>() {
@@ -84,23 +87,23 @@ public class ApolicesControllerTests {
 		System.out.println(rateResponse.getBody().size());
 		System.out.println();
 		System.out.println("List<Apolices> listApolices = rateResponse.getBody()");
-//		List<Apolices> listApolices = rateResponse.getBody();
-		listApolices = rateResponse.getBody();
+		List<Apolices> listApolices = rateResponse.getBody();
+//		listApolices = rateResponse.getBody();
 		System.out.println();
 		System.out.println("listApolices");
 		System.out.println("apolices[0]: " + listApolices.size());
 		System.out.println("listApolices");
 		System.out.println("apolices[0]: " + listApolices.get(0).getNumero());
 
-		Object[] objects = responseEntity.getBody();
+//		Object[] objects = responseEntity.getBody();
 		// MediaType contentType = responseEntity.getHeaders().getContentType();
 		// HttpStatus statusCode = responseEntity.getStatusCode();
 
 		System.out.println("Apolices a = msg.get(0);");
-		Apolices a = (Apolices) objects[0];
+//		Apolices a = (Apolices) objects[0];
 		// Apolices a = msg.get(0);
 		System.out.println("a.getNumero()");
-		System.out.println(a.getNumero());
+//		System.out.println(a.getNumero());
 
 		System.out.println();
 		// System.out.println(msg);
