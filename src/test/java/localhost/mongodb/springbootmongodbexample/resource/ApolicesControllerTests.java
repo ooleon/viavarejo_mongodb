@@ -145,7 +145,7 @@ public class ApolicesControllerTests {
 		Apolices apolices = new Apolices( numero, new Date(),  new Date(), "POST00", 345.5, 12341234L);
 		//postForObject(
 		restTemplate.postForEntity(
-				  "http://localhost:8095/rest/apolices/salvaraleatorio",
+				  "http://localhost:8095/rest/apolices/salvar",
 				  apolices,
 				  Apolices.class);
 		
@@ -154,6 +154,27 @@ public class ApolicesControllerTests {
 		assertNotNull("no paso, esta apoliceSalvada esta nulo", apoliceSalvada);
 		System.out.println("salvado: " + apoliceSalvada);
 	}
+	
+	@Test
+	public void salvaraleatorio() {
+		System.out.println();
+		System.out.println("ApolicesControllerTests.salvaraleatorio()");
+		Long numero=123321L;
+		Apolices apolices = new Apolices( numero, new Date(),  new Date(), "POST00", 345.5, 12341234L);
+		//postForObject(
+		restTemplate.postForEntity(
+				  "http://localhost:8095/rest/apolices/salvaraleatorio",
+				  apolices,
+				  Apolices.class);
+		
+		Apolices apoliceSalvada = apolicesService.findOne(numero);
+		
+		assertNotNull("no paso, esta apoliceSalvada esta nulo", apoliceSalvada);
+		System.out.println("salvaraleatorio: " + apoliceSalvada);
+		System.out.println("numero: " + 123321L + " diferente do aleatorio " + apoliceSalvada.getNumero());
+	}
+	
+	
 	
 	/*
 	 * // @RequestMapping(value = { "/salvar" }, method = { RequestMethod.POST })
