@@ -38,7 +38,7 @@ public class ClientesService {
 		logger.info(clientes.toString());
 		return clientes;
 	}
-
+	
 	public List<Clientes> findAll() {
 		List<Clientes> lc = clienteRepository.findAll();
 		logger.info(lc.toArray().toString());

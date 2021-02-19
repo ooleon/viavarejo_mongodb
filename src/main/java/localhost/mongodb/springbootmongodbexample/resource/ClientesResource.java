@@ -29,6 +29,11 @@ public class ClientesResource {
 		return new ResponseEntity(this.clientesService.save(c), HttpStatus.OK);
 	}
 
+	@RequestMapping(value = { "/crear" }, method = { RequestMethod.POST })
+	public ResponseEntity<Clientes> crear(@RequestBody Clientes c) {
+		return new ResponseEntity(this.clientesService.crear(c), HttpStatus.OK);
+	}
+
 	@GetMapping("/all")
 	public List<Clientes> getAll() {
 		return clientesService.findAll();

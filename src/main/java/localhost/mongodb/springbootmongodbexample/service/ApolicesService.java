@@ -38,7 +38,7 @@ public class ApolicesService {
 	@Autowired
 	private ClientesService clientesService;
 
-	public Apolices saveNumeroRandom(Apolices a) {
+	public Apolices crear(Apolices a) {
 		Long numero = generarIdRandom();
 		a.setNumero(numero);
 		

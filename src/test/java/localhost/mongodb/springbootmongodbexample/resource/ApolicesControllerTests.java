@@ -158,13 +158,13 @@ public class ApolicesControllerTests {
 	}
 	
 	@Test
-	public void salvaraleatorio() {
+	public void crear() {
 		System.out.println();
-		System.out.println("ApolicesControllerTests.salvaraleatorio()");
+		System.out.println("ApolicesControllerTests.crear()");
 		Long numero=1111L;
 		Apolices apolices = new Apolices( numero, new Date(),  new Date(), "POST00", 345.5, 12341234L);
 		System.out.println("Apolices cadastrado: " + apolices);
-		String url = "http://localhost:8095/rest/apolices/salvaraleatorio";
+		String url = "http://localhost:8095/rest/apolices/crear";
 		System.out.println(url);
 		ResponseEntity<Apolices> responseEntity = restTemplate.postForEntity(
 				  url,
