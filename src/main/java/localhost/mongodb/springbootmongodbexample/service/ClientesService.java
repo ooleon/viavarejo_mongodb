@@ -39,6 +39,12 @@ public class ClientesService {
 		return clientes;
 	}
 	
+	public Clientes crear(Clientes c) {
+		Clientes clientes = clienteRepository.save(c);
+		logger.info(clientes.toString());
+		return clientes;
+	}
+	
 	public List<Clientes> findAll() {
 		List<Clientes> lc = clienteRepository.findAll();
 		logger.info(lc.toArray().toString());

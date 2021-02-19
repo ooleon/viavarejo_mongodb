@@ -30,9 +30,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
 import java.util.logging.Logger;
@@ -59,60 +62,10 @@ public class ApolicesControllerTests {
 		System.out.println("ApolicesControllerTests.getAll()");
 		String url = "http://localhost:8095/rest/apolices/all";
 		String msg = this.restTemplate.getForObject(url, String.class);
-//		System.out.println(msg);
-//		System.out.println(url);
-		System.out.println();
 
-		
-		/*
-		 System.out.println("ResponseEntity <Object[]>"); 
-		 ResponseEntity<Object[]>
-		  responseEntity = this.restTemplate.getForEntity(url, Object[].class);
-		  
-		  System.out.println(); System.out.println("responseEntity.getBody().length");
-		  System.out.println(responseEntity.getBody().length);
-		  
-		  System.out.println("Object[] objs = rateResponse.getBody()"); Object[] objs=
-		  responseEntity.getBody(); System.out.println(); List<Apolices> listApolices =
-		  new ArrayList<Apolices>(); for (Object object : objs) {
-		  listApolices.add((Apolices) object) ; }
-		  System.out.println("for (Object object : objs)");
-		  
-
-		ResponseEntity<List<Apolices>> responseEntity = restTemplate.exchange(url, HttpMethod.GET, null,
-				new ParameterizedTypeReference<List<Apolices>>() {
-				});
-		 */
-		
-
-/*
- * 
-		ResponseEntity<Apolices[]> responseEntity1 = restTemplate.exchange(url, HttpMethod.GET, null,
-				new ParameterizedTypeReference<Apolices[]>() {
-				});
-		List<Apolices> la1= Arrays.asList(responseEntity1.getBody());
-		la1.toString();
-		System.out.println("responseEntity1" + responseEntity1.getStatusCodeValue());
-		Assert.assertTrue(responseEntity1.getStatusCodeValue()>=200 && responseEntity1.getStatusCodeValue()<=230);
-		Apolices[] Apolices1 = responseEntity1.getBody();
-*/
-
-		/*
-		ResponseEntity<Apolices[]> responseEntity2 =
-				  restTemplate.getForEntity(
-					url,
-				  Apolices[].class);
-		Apolices[] arrayApolices = responseEntity2.getBody();
-		List<Apolices> listApolices = Arrays.asList(arrayApolices);
-		listApolices.stream().forEach((apolices)->{
-			System.out.println(apolices);
-		});
-		System.out.println("responseEntity2");
-		*/
-		
 		Apolices[] responseEntity = this.restTemplate.getForObject(url, Apolices[].class);
-//		Assert.assertTrue(responseEntity != null);
 		assertThat(responseEntity).isNotNull();
+
 		List<Apolices> la= Arrays.asList(responseEntity);
 		System.out.println();
 		la.stream().forEach((a)->{
@@ -139,12 +92,19 @@ public class ApolicesControllerTests {
 	}
 
 	@Test
-	public void salvar() {
+	public void salvar() throws Exception {
 		System.out.println();
 		System.out.println("ApolicesControllerTests.salvar()");
-		Long numero=123321L;
-		Apolices apolices = new Apolices( numero, new Date(),  new Date(), "POST00", 345.5, 12341234L);
-		//postForObject(
+		Long numero=44445678902L;
+		Apolices apolices = apolicesService.findOne(numero);
+		Double valorOld = apolices.getValor();
+		Double valorNew = 67000.5;
+		Date dateI = new SimpleDateFormat("dd/mm/yyyy").parse("10/03/2021"); 
+		Date dateF = new SimpleDateFormat("dd/mm/yyyy").parse("20/05/2021");
+		apolices.setVigenciaInicio(dateI); 
+		apolices.setVigenciaFim(dateF);
+		apolices.setValor(valorNew);
+
 		restTemplate.postForEntity(
 				  "http://localhost:8095/rest/apolices/salvar",
 				  apolices,
@@ -154,6 +114,7 @@ public class ApolicesControllerTests {
 		
 		assertNotNull("no paso, esta apoliceSalvada esta nulo", apoliceSalvada);
 		System.out.println("salvado: " + apoliceSalvada);
+		assertNotEquals(valorOld, valorNew);
 		System.out.println();
 	}
 	

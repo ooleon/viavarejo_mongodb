@@ -10,8 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document
 public class Apolices implements Serializable {
 
-	private static final long serialVersionUID = 34535L;
-
 	@Id
 	private Long numero;
 	private Date vigenciaInicio;
@@ -67,54 +65,8 @@ public class Apolices implements Serializable {
 		this.vigenciaFim = vigenciaFim;
 		this.placaVeiculo = placaVeiculo;
 		this.valor = valor;
-		this.emVigencia = emVigencia;
-		this.diasVigencia = diasVigencia;
 		this.cpfCliente = cpfCliente;
-	}
-
-
-	
-	/* *
-	 * @param numero
-	 * @param vigenciaInicio
-	 * @param vigenciaFim
-	 * @param placaVeiculo
-	 * @param valor
-	 * @param emVigencia
-	 * @param diasVigencia
-	 * @param cpfCliente
-	 * /
-	public Apolices(Long numero, Date vigenciaInicio, Date vigenciaFim, String placaVeiculo, Double valor,
-			Boolean emVigencia, int diasVigencia, Long cpfCliente) {
-		this.numero = numero;
-		this.vigenciaInicio = vigenciaInicio;
-		this.vigenciaFim = vigenciaFim;
-		this.placaVeiculo = placaVeiculo;
-		this.valor = valor;
-		this.emVigencia = emVigencia;
-		this.diasVigencia = diasVigencia;
-		this.cpfCliente = cpfCliente;
-	}
-*/
-	
-	
-	
-	/*
-	 * @Override public String toString() { StringBuilder builder = new
-	 * StringBuilder();
-	 * builder.append("{numero=").append(numero).append(", vigenciaInicio=").append(
-	 * vigenciaInicio)
-	 * .append(", vigenciaFim=").append(vigenciaFim).append(", placaVeiculo=").
-	 * append(placaVeiculo)
-	 * .append(", valor=").append(valor).append(", emVigencia=").append(
-	 * getEmVigencia()).append(", cpfCliente=") .append(cpfCliente).append("}");
-	 * return builder.toString(); }
-	 */
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
+	}	
 
 	public Long getCpfCliente() {
 		return cpfCliente;

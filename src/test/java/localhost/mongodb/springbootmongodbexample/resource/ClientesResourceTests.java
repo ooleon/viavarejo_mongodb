@@ -91,15 +91,38 @@ public class ClientesResourceTests {
 	}
 
 	@Test
-	public void salvar() {
+	public void crear() {
 		System.out.println();
-		System.out.println("ClientesResourceTests.salvar()");
+		System.out.println("ClientesResourceTests.crear()");
 		Long numero=12345678955L;
 		Clientes clientes  = new Clientes( numero, "Lisbeth", "Mato Groso", "MG");
 
 		restTemplate.postForEntity(
-				  "http://localhost:8095/rest/clientes/salvar",
+				  "http://localhost:8095/rest/clientes/crear",
 				  clientes,
+				  Clientes.class);
+		
+		Clientes clientesSalvada = clientesService.findOne(numero);
+		
+		assertNotNull("no paso, esta clientesSalvada esta nulo", clientesSalvada);
+		System.out.println("salvado: " + clientesSalvada);
+		System.out.println();
+	}
+
+	@Test
+	public void salvar() {
+		System.out.println();
+		System.out.println("ClientesResourceTests.salvar()");
+		Long numero=12345678902L;
+		Clientes clienteOld  = clientesService.findOne(numero);
+		clienteOld.setNome("Lisbeth");
+		clienteOld.setCidade("Mato Groso");
+		clienteOld.setUf("MG");
+		
+
+		restTemplate.postForEntity(
+				  "http://localhost:8095/rest/clientes/salvar",
+				  clienteOld,
 				  Clientes.class);
 		
 		Clientes clientesSalvada = clientesService.findOne(numero);
