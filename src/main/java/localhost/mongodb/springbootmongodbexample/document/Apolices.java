@@ -38,18 +38,6 @@ public class Apolices implements Serializable {
 		
 	}
 	
-	
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("{numero=").append(numero).append(", vigenciaInicio=").append(vigenciaInicio)
-				.append(", vigenciaFim=").append(vigenciaFim).append(", placaVeiculo=").append(placaVeiculo)
-				.append(", valor=").append(valor).append(", emVigencia=").append(getEmVigencia()).append(", diasVigencia=")
-				.append(getDiasVigencia()).append(", cpfCliente=").append(cpfCliente).append("}");
-		return builder.toString();
-	}
-
-
 	/**
 	 * @param numero
 	 * @param vigenciaInicio
@@ -58,15 +46,31 @@ public class Apolices implements Serializable {
 	 * @param valor
 	 * @param cpfCliente
 	 */
-	public Apolices(Long numero, Date vigenciaInicio, Date vigenciaFim,
-			String placaVeiculo, Double valor, Long cpfCliente) {
+	public Apolices(Long numero, Date vigenciaInicio, Date vigenciaFim, String placaVeiculo, Double valor,
+			Long cpfCliente) {
 		this.numero = numero;
 		this.vigenciaInicio = vigenciaInicio;
 		this.vigenciaFim = vigenciaFim;
 		this.placaVeiculo = placaVeiculo;
 		this.valor = valor;
 		this.cpfCliente = cpfCliente;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("{numero=").append(numero).append(", vigenciaInicio=").append(vigenciaInicio)
+				.append(", vigenciaFim=").append(vigenciaFim).append(", placaVeiculo=").append(placaVeiculo)
+				.append(", valor=").append(valor).append(", cpfCliente=").append(cpfCliente)
+				.append(", getEmVigencia()=").append(getEmVigencia()).append(", getDiasVigencia()=")
+				.append(getDiasVigencia()).append("}");
+		return builder.toString();
+	}
+
+
+
+
+
 
 	public Long getCpfCliente() {
 		return cpfCliente;
